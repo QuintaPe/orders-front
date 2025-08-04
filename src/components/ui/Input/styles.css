@@ -1,0 +1,88 @@
+/* Input Component */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: var(--bg-primary);
+    font-family: inherit;
+    color: var(--text-primary);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+.input::placeholder {
+    color: var(--text-light);
+}
+
+.input--small {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.input--medium {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.input--large {
+    padding: 16px 20px;
+    font-size: 16px;
+}
+
+.input--full-width {
+    width: 100%;
+}
+
+.input--disabled {
+    background: var(--bg-secondary);
+    color: var(--text-light);
+    cursor: not-allowed;
+}
+
+.input--error {
+    border-color: var(--danger-color);
+}
+
+.input--error:focus {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input--with-icon {
+    padding-left: 40px;
+}
+
+.input--icon-right {
+    padding-left: 16px;
+    padding-right: 40px;
+}
+
+.input-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.input-icon--left {
+    left: 12px;
+}
+
+.input-icon--right {
+    right: 12px;
+}

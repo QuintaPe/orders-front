@@ -1,0 +1,16 @@
+/* LoadingSpinner Component */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 100vh;
+    background: var(--bg-secondary);
+}
+
+.loading-spinner__text {
+    color: var(--text-secondary);
+    font-size: 16px;
+    margin: 0;
+}

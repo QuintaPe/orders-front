@@ -1,0 +1,35 @@
+/* DashboardNav Component */
+.dashboard-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.dashboard-nav-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 4px;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.dashboard-nav-tab:hover {
+    color: #374151;
+    border-bottom-color: #d1d5db;
+}
+
+.dashboard-nav-tab--active {
+    color: #f97316;
+    border-bottom-color: #f97316;
+}
+
+.dashboard-nav-icon {
+    width: 20px;
+    height: 20px;
+}

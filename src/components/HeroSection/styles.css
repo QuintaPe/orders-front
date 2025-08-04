@@ -1,0 +1,37 @@
+/* HeroSection Component */
+.hero-section {
+    position: relative;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin: 1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        height: 250px;
+        margin: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-section {
+        height: 300px;
+        margin: 2rem;
+    }
+}

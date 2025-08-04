@@ -1,0 +1,177 @@
+/* NavigationBar Component */
+.nav-bar {
+    height: 60px;
+    background: var(--bg-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Logo Styles */
+.nav-logo {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo:hover {
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.nav-button:hover {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
+}
+
+.nav-button:active {
+    transform: translateY(0);
+}
+
+/* Cart Button */
+.nav-button--cart {
+    color: var(--primary-color);
+}
+
+.nav-button--cart:hover {
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--primary-dark);
+}
+
+.cart-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: var(--danger-color);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    animation: badgePulse 0.3s ease-in-out;
+}
+
+@keyframes badgePulse {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* User Button */
+.nav-button--user {
+    color: var(--text-secondary);
+}
+
+.nav-button--user:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .nav-bar {
+        height: 64px;
+        padding: 0 24px;
+    }
+
+    .logo-text {
+        font-size: 22px;
+    }
+
+    .nav-button {
+        min-width: 44px;
+        height: 44px;
+    }
+
+    .nav-right {
+        gap: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-bar {
+        padding: 0 32px;
+    }
+
+    .logo-text {
+        font-size: 24px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .nav-bar {
+        background: var(--bg-primary);
+        border-bottom-color: var(--border-color);
+    }
+
+    .nav-button:hover {
+        background: var(--bg-secondary);
+    }
+
+    .nav-button--cart:hover {
+        background: rgba(249, 115, 22, 0.2);
+    }
+}

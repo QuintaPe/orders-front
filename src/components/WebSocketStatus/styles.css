@@ -1,0 +1,26 @@
+.websocket-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.websocket-status .status-connected {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #059669;
+}
+
+.websocket-status .status-disconnected {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #dc2626;
+}
+
+.websocket-status .status-connected svg,
+.websocket-status .status-disconnected svg {
+    flex-shrink: 0;
+}
