@@ -29,7 +29,7 @@ function WaiterDashboardPage() {
 
         // Cargar pedidos iniciales
         fetchOrders();
-    }, [isAuthenticated, navigate, requestNotificationPermission]);
+    }, []);
 
     const fetchOrders = async () => {
         try {
