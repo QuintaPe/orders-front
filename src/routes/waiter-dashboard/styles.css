@@ -386,3 +386,28 @@
         padding: 1rem;
     }
 }
+
+/* Animación para nuevos pedidos del WebSocket */
+.new-order {
+    animation: slideInNew 0.5s ease-out, backgroundHighlight 2s ease-out;
+}
+
+@keyframes slideInNew {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes backgroundHighlight {
+    0% {
+        background: #fef3c7;
+    }
+
+    100% {
+        background: white;
+    }
+}

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Clock, ChefHat, CheckCircle, CheckCircle2, Wifi, WifiOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useWebSocket } from '../../context/WebSocketContext.jsx';
-import { useWebSocketNotifications } from '../../hooks/useWebSocketNotifications.js';
 import Layout from '../../layouts/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import { Button, Card, Badge, EmptyState } from '../../components/ui';
@@ -14,8 +13,7 @@ function WaiterDashboardPage() {
     const [loading, setLoading] = useState(true);
     const [updatingOrder, setUpdatingOrder] = useState(null);
     const { user, logout, isAuthenticated } = useAuth();
-    const { orders, setOrders, isConnected, updateOrderStatus } = useWebSocket();
-    const { requestNotificationPermission } = useWebSocketNotifications();
+    const { orders, setOrders, isConnected } = useWebSocket();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,9 +21,6 @@ function WaiterDashboardPage() {
             navigate('/login');
             return;
         }
-
-        // Solicitar permisos de notificación al cargar
-        requestNotificationPermission();
 
         // Cargar pedidos iniciales
         fetchOrders();
@@ -207,7 +202,7 @@ function WaiterDashboardPage() {
                                 />
                             ) : (
                                 orders.map((order) => (
-                                    <Card key={order.id} className="order-item" padding="medium" shadow="small">
+                                    <Card key={order.id} className={`order-item ${order.isNew ? 'new-order' : ''}`} padding="medium" shadow="small">
                                         <div className="order-content">
                                             <div className="order-header">
                                                 <div className="table-info">

@@ -15,9 +15,9 @@ export const useWebSocket = () => {
 export const WebSocketProvider = ({ children }) => {
     const [isConnected, setIsConnected] = useState(false);
     const [orders, setOrders] = useState([]);
-    const [newOrders, setNewOrders] = useState([]);
     const [updatedOrders, setUpdatedOrders] = useState([]);
     const socketRef = useRef(null);
+    const notificationSound = useRef(new Audio('/notification.mp3'));
     const { isAuthenticated, user } = useAuth();
 
     // Configuración del WebSocket
@@ -57,8 +57,8 @@ export const WebSocketProvider = ({ children }) => {
         // Eventos de pedidos
         socketRef.current.on('order:created', (order) => {
             console.log('Nuevo pedido recibido:', order);
-            setNewOrders(prev => [...prev, order]);
-            setOrders(prev => [order, ...prev]);
+            notificationSound.current.play().catch(err => console.error('Error playing sound:', err));
+            setOrders(prev => [{ ...order, isNew: true }, ...prev]);
         });
 
         socketRef.current.on('orders:updated', (order) => {
@@ -97,11 +97,6 @@ export const WebSocketProvider = ({ children }) => {
         emit('orders:updateStatus', { orderId, status });
     };
 
-    // Función para limpiar notificaciones
-    const clearNewOrders = () => {
-        setNewOrders([]);
-    };
-
     const clearUpdatedOrders = () => {
         setUpdatedOrders([]);
     };
@@ -110,11 +105,9 @@ export const WebSocketProvider = ({ children }) => {
         isConnected,
         orders,
         setOrders,
-        newOrders,
         updatedOrders,
         emit,
         updateOrderStatus,
-        clearNewOrders,
         clearUpdatedOrders
     };
 
