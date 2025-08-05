@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import { useCart } from '../../context/CartContext.jsx';
 import { Button, Badge, EmptyState, useToast } from '../../components/ui';
@@ -10,6 +11,7 @@ function CartPage() {
     const navigate = useNavigate();
     const { cartItems, removeFromCart, updateQuantity, clearCart, getCartTotal } = useCart();
     const toast = useToast();
+    const { t } = useI18n();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleRemoveFromCart = (productId) => {
@@ -43,11 +45,11 @@ function CartPage() {
             };
 
             await OrdersRepository.createOrder(orderData);
-            toast.showSuccess('Pedido creado exitosamente');
+            toast.showSuccess(t('orderCreatedSuccess'));
             onComplete();
         } catch (error) {
             console.error('Error creating order:', error);
-            const errorMessage = error.message || 'Error al crear el pedido. Por favor, inténtalo de nuevo.';
+            const errorMessage = error.message || t('orderCreatedError');
             toast.showError(errorMessage);
         } finally {
             setIsSubmitting(false);
@@ -55,14 +57,14 @@ function CartPage() {
     };
 
     return (
-        <Layout title="Carrito" showBack={true}>
+        <Layout title={t('cart')} showBack={true}>
             <div className="cart-page">
                 {cartItems.length === 0 ? (
                     <EmptyState
                         icon="🛒"
-                        title="Tu carrito está vacío"
-                        description="Agrega algunos productos deliciosos para comenzar"
-                        actionText="Ver Menú"
+                        title={t('cartEmpty')}
+                        description={t('cartEmptyDescription')}
+                        actionText={t('viewMenu')}
                         onAction={handleBackToMenu}
                     />
                 ) : (
@@ -106,7 +108,7 @@ function CartPage() {
                                                 size="small"
                                                 className="remove-button"
                                             >
-                                                Eliminar
+                                                {t('remove')}
                                             </Button>
                                         </div>
                                     </div>
@@ -116,7 +118,7 @@ function CartPage() {
 
                         <div className="cart-summary">
                             <div className="cart-total">
-                                <span className="total-label">Total:</span>
+                                <span className="total-label">{t('total')}:</span>
                                 <span className="total-amount">€{getCartTotal().toFixed(2)}</span>
                             </div>
                             <div className="cart-actions">
@@ -126,7 +128,7 @@ function CartPage() {
                                     size="medium"
                                     className="clear-cart-button"
                                 >
-                                    Vaciar Carrito
+                                    {t('clearCart')}
                                 </Button>
                                 <Button
                                     onClick={handleSubmit}
@@ -135,7 +137,7 @@ function CartPage() {
                                     className="checkout-button"
                                     loading={isSubmitting}
                                 >
-                                    Realizar Pedido
+                                    {t('placeOrder')}
                                 </Button>
                             </div>
                         </div>

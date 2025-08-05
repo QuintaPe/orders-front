@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import { Input, Button, Card } from '../../components/ui';
@@ -14,6 +15,7 @@ function LoginPage() {
     const [isLoading, setIsLoading] = useState(false);
     const { login, error } = useAuth();
     const navigate = useNavigate();
+    const { t } = useI18n();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,7 +41,7 @@ function LoginPage() {
     }
 
     return (
-        <Layout title="Iniciar Sesión">
+        <Layout title={t('loginTitle')}>
             <div className="login-container">
                 <Card className="login-card" padding="large" shadow="large">
                     {/* Header */}
@@ -48,10 +50,10 @@ function LoginPage() {
                             <User className="h-8 w-8 text-white" />
                         </div>
                         <h2 className="login-title">
-                            Bienvenido
+                            {t('welcome')}
                         </h2>
                         <p className="login-subtitle">
-                            Inicia sesión para acceder al sistema
+                            {t('loginSubtitle')}
                         </p>
                     </div>
 
@@ -65,7 +67,7 @@ function LoginPage() {
 
                         <div className="form-group">
                             <label htmlFor="username" className="form-label">
-                                Usuario
+                                {t('username')}
                             </label>
                             <Input
                                 id="username"
@@ -73,14 +75,14 @@ function LoginPage() {
                                 required
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Ingresa tu usuario"
+                                placeholder={t('usernamePlaceholder')}
                                 fullWidth
                             />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="password" className="form-label">
-                                Contraseña
+                                {t('password')}
                             </label>
                             <Input
                                 id="password"
@@ -88,7 +90,7 @@ function LoginPage() {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Ingresa tu contraseña"
+                                placeholder={t('passwordPlaceholder')}
                                 fullWidth
                             />
                         </div>
@@ -100,22 +102,22 @@ function LoginPage() {
                             size="large"
                             fullWidth
                         >
-                            {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+                            {isLoading ? t('signingIn') : t('signIn')}
                         </Button>
                     </form>
 
                     {/* Demo Credentials */}
                     <div className="demo-credentials">
-                        <h3 className="demo-title">Credenciales de Prueba:</h3>
+                        <h3 className="demo-title">{t('demoCredentials')}</h3>
                         <div className="demo-list">
                             <div>
-                                <strong>Camarero:</strong> waiter1 / password123
+                                <strong>{t('waiter')}:</strong> waiter1 / password123
                             </div>
                             <div>
-                                <strong>Gerente:</strong> manager / password123
+                                <strong>{t('manager')}:</strong> manager / password123
                             </div>
                             <div>
-                                <strong>Admin:</strong> admin / password123
+                                <strong>{t('admin')}:</strong> admin / password123
                             </div>
                         </div>
                     </div>

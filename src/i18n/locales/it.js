@@ -1,0 +1,361 @@
+export default {
+    // Common
+    loading: 'Caricamento...',
+    error: 'Errore',
+    success: 'Successo',
+    cancel: 'Annulla',
+    save: 'Salva',
+    delete: 'Elimina',
+    edit: 'Modifica',
+    add: 'Aggiungi',
+    back: 'Indietro',
+    next: 'Avanti',
+    previous: 'Precedente',
+    close: 'Chiudi',
+    confirm: 'Conferma',
+    yes: 'Sì',
+    no: 'No',
+    all: 'Tutti',
+    view: 'Visualizza',
+    search: 'Cerca',
+    filter: 'Filtra',
+    sort: 'Ordina',
+    refresh: 'Aggiorna',
+    retry: 'Riprova',
+    reload: 'Ricarica',
+
+    // Navigation
+    home: 'Home',
+    menu: 'Menu',
+    cart: 'Carrello',
+    login: 'Accedi',
+    logout: 'Esci',
+    profile: 'Profilo',
+    dashboard: 'Dashboard',
+    settings: 'Impostazioni',
+    orders: 'Ordini',
+    products: 'Prodotti',
+    categories: 'Categorie',
+    users: 'Utenti',
+    analytics: 'Analisi',
+
+    // Hero Section
+    heroTitle: 'Cibo Delizioso',
+    heroSubtitle: 'Ingredienti freschi, gusto straordinario',
+
+    // Search
+    searchPlaceholder: 'Trova il tuo cibo qui...',
+    searchResults: 'Risultati di ricerca',
+    noResults: 'Nessun risultato trovato',
+    searchFor: 'Cerca per',
+
+    // Categories
+    popular: 'Popolare',
+    allProducts: 'Tutti i Prodotti',
+    viewAll: 'Visualizza Tutto',
+    selectCategory: 'Seleziona Categoria',
+
+    // Products
+    product: 'Prodotto',
+    products: 'Prodotti',
+    addToCart: 'Aggiungi al Carrello',
+    removeFromCart: 'Rimuovi dal Carrello',
+    outOfStock: 'Esaurito',
+    inStock: 'Disponibile',
+    price: 'Prezzo',
+    quantity: 'Quantità',
+    total: 'Totale',
+    subtotal: 'Subtotale',
+    tax: 'Tassa',
+    shipping: 'Spedizione',
+    discount: 'Sconto',
+    finalTotal: 'Totale Finale',
+
+    // Cart
+    cartEmpty: 'Il tuo carrello è vuoto',
+    cartItems: 'Articoli nel Carrello',
+    cartTotal: 'Totale Carrello',
+    checkout: 'Procedi all\'Acquisto',
+    continueShopping: 'Continua a Fare Shopping',
+    clearCart: 'Svuota Carrello',
+    updateCart: 'Aggiorna Carrello',
+    cartCount: '{{count}} articoli nel carrello',
+
+    // Orders
+    order: 'Ordine',
+    orders: 'Ordini',
+    orderNumber: 'Ordine #{{number}}',
+    orderDate: 'Data Ordine',
+    orderStatus: 'Stato Ordine',
+    orderTotal: 'Totale Ordine',
+    orderDetails: 'Dettagli Ordine',
+    orderHistory: 'Cronologia Ordini',
+    pending: 'In Attesa',
+    confirmed: 'Confermato',
+    preparing: 'In Preparazione',
+    ready: 'Pronto',
+    delivered: 'Consegnato',
+    cancelled: 'Annullato',
+
+    // Authentication
+    email: 'Email',
+    password: 'Password',
+    confirmPassword: 'Conferma Password',
+    firstName: 'Nome',
+    lastName: 'Cognome',
+    phone: 'Telefono',
+    address: 'Indirizzo',
+    signIn: 'Accedi',
+    signUp: 'Registrati',
+    forgotPassword: 'Password dimenticata?',
+    resetPassword: 'Reimposta Password',
+    createAccount: 'Crea Account',
+    alreadyHaveAccount: 'Hai già un account?',
+    dontHaveAccount: 'Non hai un account?',
+    loginSuccess: 'Accesso effettuato con successo',
+    loginError: 'Accesso fallito',
+    logoutSuccess: 'Disconnessione effettuata con successo',
+
+    // Dashboard
+    welcome: 'Benvenuto',
+    overview: 'Panoramica',
+    recentOrders: 'Ordini Recenti',
+    topProducts: 'Prodotti Top',
+    sales: 'Vendite',
+    revenue: 'Ricavi',
+    customers: 'Clienti',
+    today: 'Oggi',
+    thisWeek: 'Questa Settimana',
+    thisMonth: 'Questo Mese',
+    thisYear: 'Quest\'Anno',
+
+    // Notifications
+    notification: 'Notifica',
+    notifications: 'Notifiche',
+    newOrder: 'Nuovo Ordine',
+    orderUpdated: 'Ordine Aggiornato',
+    orderCancelled: 'Ordine Annullato',
+    orderDelivered: 'Ordine Consegnato',
+
+    // Errors
+    errorLoadingData: 'Errore nel caricamento dei dati. Ricarica la pagina.',
+    errorSavingData: 'Errore nel salvataggio dei dati. Riprova.',
+    errorDeletingData: 'Errore nell\'eliminazione dei dati. Riprova.',
+    errorNetwork: 'Errore di rete. Controlla la tua connessione.',
+    errorUnauthorized: 'Accesso non autorizzato.',
+    errorForbidden: 'Accesso vietato.',
+    errorNotFound: 'Pagina non trovata.',
+    errorServer: 'Errore del server. Riprova più tardi.',
+
+    // Success Messages
+    dataSaved: 'Dati salvati con successo.',
+    dataDeleted: 'Dati eliminati con successo.',
+    orderPlaced: 'Ordine effettuato con successo.',
+    cartUpdated: 'Carrello aggiornato con successo.',
+
+    // Form Validation
+    required: 'Questo campo è obbligatorio.',
+    invalidEmail: 'Inserisci un indirizzo email valido.',
+    passwordTooShort: 'La password deve essere di almeno 6 caratteri.',
+    passwordsDoNotMatch: 'Le password non corrispondono.',
+    invalidPhone: 'Inserisci un numero di telefono valido.',
+
+    // Time
+    now: 'Ora',
+    today: 'Oggi',
+    yesterday: 'Ieri',
+    tomorrow: 'Domani',
+    minutes: 'minuti',
+    hours: 'ore',
+    days: 'giorni',
+    ago: 'fa',
+    in: 'tra',
+
+    // Currency
+    currency: '€',
+    free: 'Gratis',
+
+    // Language
+    language: 'Lingua',
+    english: 'Inglese',
+    italian: 'Italiano',
+    german: 'Tedesco',
+    spanish: 'Spagnolo',
+
+    // Theme
+    theme: 'Tema',
+    light: 'Chiaro',
+    dark: 'Scuro',
+    auto: 'Automatico',
+
+    // Actions
+    viewDetails: 'Visualizza Dettagli',
+    editItem: 'Modifica Elemento',
+    deleteItem: 'Elimina Elemento',
+    duplicateItem: 'Duplica Elemento',
+    exportData: 'Esporta Dati',
+    importData: 'Importa Dati',
+    download: 'Scarica',
+    upload: 'Carica',
+    print: 'Stampa',
+    share: 'Condividi',
+    copy: 'Copia',
+    paste: 'Incolla',
+    cut: 'Taglia',
+    undo: 'Annulla',
+    redo: 'Ripeti',
+
+    // Status
+    active: 'Attivo',
+    inactive: 'Inattivo',
+    enabled: 'Abilitato',
+    disabled: 'Disabilitato',
+    online: 'Online',
+    offline: 'Offline',
+    available: 'Disponibile',
+    unavailable: 'Non Disponibile',
+
+    // User Roles
+    admin: 'Amministratore',
+    manager: 'Manager',
+    waiter: 'Cameriere',
+    customer: 'Cliente',
+    guest: 'Ospite',
+
+    // Waiter Dashboard
+    newOrders: 'Nuovi Ordini',
+    activeOrders: 'Ordini Attivi',
+    completedOrders: 'Ordini Completati',
+    acceptOrder: 'Accetta Ordine',
+    rejectOrder: 'Rifiuta Ordine',
+    markReady: 'Segna come Pronto',
+    markDelivered: 'Segna come Consegnato',
+
+    // Admin Dashboard
+    systemOverview: 'Panoramica Sistema',
+    userManagement: 'Gestione Utenti',
+    productManagement: 'Gestione Prodotti',
+    orderManagement: 'Gestione Ordini',
+    systemSettings: 'Impostazioni Sistema',
+    reports: 'Report',
+    backup: 'Backup',
+    restore: 'Ripristina',
+
+    // Login Page
+    loginTitle: 'Accedi',
+    welcome: 'Benvenuto',
+    loginSubtitle: 'Accedi per accedere al sistema',
+    username: 'Nome utente',
+    password: 'Password',
+    usernamePlaceholder: 'Inserisci il tuo nome utente',
+    passwordPlaceholder: 'Inserisci la tua password',
+    signIn: 'Accedi',
+    signingIn: 'Accesso in corso...',
+    demoCredentials: 'Credenziali Demo:',
+    waiter: 'Cameriere',
+    manager: 'Manager',
+    admin: 'Amministratore',
+
+    // Cart Page
+    cart: 'Carrello',
+    cartEmpty: 'Il tuo carrello è vuoto',
+    cartEmptyDescription: 'Aggiungi alcuni prodotti deliziosi per iniziare',
+    viewMenu: 'Visualizza Menu',
+    remove: 'Rimuovi',
+    clearCart: 'Svuota Carrello',
+    placeOrder: 'Effettua Ordine',
+    orderCreatedSuccess: 'Ordine creato con successo',
+    orderCreatedError: 'Errore nella creazione dell\'ordine. Riprova.',
+    total: 'Totale',
+
+    // Waiter Dashboard
+    waiterDashboard: 'Dashboard Cameriere',
+    welcomeUser: 'Benvenuto, {{name}}',
+    realTimeConnected: 'Connesso in tempo reale',
+    disconnected: 'Disconnesso',
+    logout: 'Esci',
+    pending: 'In Attesa',
+    preparing: 'In Preparazione',
+    ready: 'Pronto',
+    delivered: 'Consegnato',
+    cancelled: 'Annullato',
+    orders: 'Ordini',
+    noOrders: 'Nessun ordine',
+    noOrdersDescription: 'Nessun ordine in attesa al momento.',
+    table: 'Tavolo',
+    tableNumber: 'Tavolo {{number}}',
+    products: 'prodotti',
+    nextStatus: 'Prossimo Stato',
+    updating: 'Aggiornamento...',
+
+    // Product Page
+    product: 'Prodotto',
+    productNotFound: 'Prodotto non trovato',
+    addToCart: 'Aggiungi al Carrello',
+    quantity: 'Quantità',
+
+    // Not Found Page
+    pageNotFound: 'Pagina non trovata',
+    pageNotFoundDescription: 'La pagina che stai cercando non esiste o è stata spostata.',
+    goBack: 'Torna Indietro',
+    goHome: 'Vai alla Home',
+
+    // Menu Page
+    menu: 'Menu',
+    allCategories: 'Tutte le Categorie',
+    filterByCategory: 'Filtra per categoria',
+
+    // Order Status
+    orderStatus: 'Stato Ordine',
+    orderNumber: 'Ordine #{{number}}',
+    orderDate: 'Data Ordine',
+    orderTotal: 'Totale Ordine',
+    orderDetails: 'Dettagli Ordine',
+    orderHistory: 'Cronologia Ordini',
+
+    // Connection Status
+    connected: 'Connesso',
+    disconnected: 'Disconnesso',
+    connecting: 'Connessione...',
+
+    // Actions
+    accept: 'Accetta',
+    reject: 'Rifiuta',
+    markAsReady: 'Segna come Pronto',
+    markAsDelivered: 'Segna come Consegnato',
+    viewOrder: 'Visualizza Ordine',
+    editOrder: 'Modifica Ordine',
+    deleteOrder: 'Elimina Ordine',
+
+    // Messages
+    orderAccepted: 'Ordine accettato',
+    orderRejected: 'Ordine rifiutato',
+    orderReady: 'Ordine pronto',
+    orderDelivered: 'Ordine consegnato',
+    orderCancelled: 'Ordine annullato',
+
+    // Validation
+    invalidUsername: 'Inserisci un nome utente valido',
+    invalidPassword: 'Inserisci una password valida',
+    loginFailed: 'Accesso fallito. Controlla le tue credenziali.',
+    sessionExpired: 'La tua sessione è scaduta. Accedi di nuovo.',
+
+    // Time
+    justNow: 'Adesso',
+    aMinuteAgo: 'Un minuto fa',
+    minutesAgo: '{{count}} minuti fa',
+    anHourAgo: 'Un\'ora fa',
+    hoursAgo: '{{count}} ore fa',
+    aDayAgo: 'Un giorno fa',
+    daysAgo: '{{count}} giorni fa',
+
+    // Currency and Numbers
+    currencySymbol: '€',
+    free: 'Gratis',
+    price: 'Prezzo',
+    subtotal: 'Subtotale',
+    tax: 'Tassa',
+    shipping: 'Spedizione',
+    discount: 'Sconto',
+    finalTotal: 'Totale Finale'
+}; 

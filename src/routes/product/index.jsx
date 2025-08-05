@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import { Button, Card, Badge } from '../../components/ui';
@@ -11,6 +12,7 @@ function ProductDetailPage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const { addToCart } = useCart();
+    const { t } = useI18n();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
@@ -51,7 +53,7 @@ function ProductDetailPage() {
 
     if (loading) {
         return (
-            <Layout title="Producto" showBack={true}>
+            <Layout title={t('product')} showBack={true}>
                 <LoadingSpinner />
             </Layout>
         );
@@ -59,9 +61,9 @@ function ProductDetailPage() {
 
     if (!product) {
         return (
-            <Layout title="Producto no encontrado" showBack={true}>
+            <Layout title={t('productNotFound')} showBack={true}>
                 <div className="product-not-found">
-                    <h2>Producto no encontrado</h2>
+                    <h2>{t('productNotFound')}</h2>
                     <p>El producto que buscas no existe.</p>
                 </div>
             </Layout>
@@ -117,7 +119,7 @@ function ProductDetailPage() {
                             fullWidth
                             className="add-to-cart-button"
                         >
-                            Agregar al Carrito - €{(product.price * quantity).toFixed(2)}
+                            {t('addToCart')} - €{(product.price * quantity).toFixed(2)}
                         </Button>
                     </div>
                 </div>

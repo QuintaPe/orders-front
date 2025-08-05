@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../context/I18nContext.jsx';
 import { Card, Tag } from '../ui';
 import './styles.css';
 
@@ -67,6 +68,7 @@ function ProductCard({ product }) {
 
 function PopularSection({ products, title = "Popular", showViewAll = true, onViewAll }) {
     const navigate = useNavigate();
+    const { t } = useI18n();
 
     // Get first 4 products for popular section, or all if less than 4
     const displayProducts = products.slice(0, 4);
@@ -85,7 +87,7 @@ function PopularSection({ products, title = "Popular", showViewAll = true, onVie
                 <h2 className="section-title">{title}</h2>
                 {showViewAll && (
                     <span className="view-all" onClick={handleViewAll}>
-                        View All
+                        {t('viewAll')}
                     </span>
                 )}
             </div>
@@ -102,8 +104,8 @@ function PopularSection({ products, title = "Popular", showViewAll = true, onVie
                     color: '#666'
                 }}>
                     <div style={{ fontSize: '48px', marginBottom: '20px' }}>🍕</div>
-                    <h3>No products found</h3>
-                    <p>Try selecting a different category or search term.</p>
+                    <h3>{t('noResults')}</h3>
+                    <p>{t('searchFor')} {t('products').toLowerCase()}</p>
                 </div>
             )}
         </div>

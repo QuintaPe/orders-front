@@ -16,6 +16,7 @@ import { CartProvider } from './context/CartContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { WebSocketProvider } from './context/WebSocketContext.jsx'
 import { ToastProvider } from './components/ui/Toast/index.jsx'
+import { I18nProvider } from './context/I18nContext.jsx'
 
 const router = createBrowserRouter([
   {
@@ -68,14 +69,16 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <ErrorBoundary>
-    <ToastProvider>
-      <AuthProvider>
-        <WebSocketProvider>
-          <CartProvider>
-            <RouterProvider router={router} />
-          </CartProvider>
-        </WebSocketProvider>
-      </AuthProvider>
-    </ToastProvider>
+    <I18nProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <WebSocketProvider>
+            <CartProvider>
+              <RouterProvider router={router} />
+            </CartProvider>
+          </WebSocketProvider>
+        </AuthProvider>
+      </ToastProvider>
+    </I18nProvider>
   </ErrorBoundary>
 )

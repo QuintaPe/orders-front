@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Clock, ChefHat, CheckCircle, CheckCircle2, Wifi, WifiOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useWebSocket } from '../../context/WebSocketContext.jsx';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import { Button, Card, Badge, EmptyState } from '../../components/ui';
@@ -15,6 +16,7 @@ function WaiterDashboardPage() {
     const { user, logout, isAuthenticated } = useAuth();
     const { orders, setOrders, isConnected } = useWebSocket();
     const navigate = useNavigate();
+    const { t } = useI18n();
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -67,11 +69,11 @@ function WaiterDashboardPage() {
 
     const getStatusText = (status) => {
         switch (status) {
-            case 'pending': return 'Pendiente';
-            case 'preparing': return 'Preparando';
-            case 'ready': return 'Listo';
-            case 'delivered': return 'Entregado';
-            case 'cancelled': return 'Cancelado';
+            case 'pending': return t('pending');
+            case 'preparing': return t('preparing');
+            case 'ready': return t('ready');
+            case 'delivered': return t('delivered');
+            case 'cancelled': return t('cancelled');
             default: return status;
         }
     };
@@ -90,28 +92,28 @@ function WaiterDashboardPage() {
     }
 
     return (
-        <Layout title="Dashboard Camarero">
+        <Layout title={t('waiterDashboard')}>
             <div className="waiter-dashboard">
                 {/* Header */}
                 <div className="dashboard-header">
                     <div className="header-content">
                         <div>
                             <h1 className="dashboard-title">
-                                Dashboard Camarero
+                                {t('waiterDashboard')}
                             </h1>
                             <p className="dashboard-subtitle">
-                                Bienvenido, {user?.name || user?.username}
+                                {t('welcomeUser', { name: user?.name || user?.username })}
                             </p>
                             <div className="connection-status">
                                 {isConnected ? (
                                     <div className="status-connected">
                                         <Wifi className="h-4 w-4" />
-                                        <span>Conectado en tiempo real</span>
+                                        <span>{t('realTimeConnected')}</span>
                                     </div>
                                 ) : (
                                     <div className="status-disconnected">
                                         <WifiOff className="h-4 w-4" />
-                                        <span>Desconectado</span>
+                                        <span>{t('disconnected')}</span>
                                     </div>
                                 )}
                             </div>
@@ -122,7 +124,7 @@ function WaiterDashboardPage() {
                             size="medium"
                             className="logout-button"
                         >
-                            Cerrar Sesión
+                            {t('logout')}
                         </Button>
                     </div>
                 </div>
@@ -137,7 +139,7 @@ function WaiterDashboardPage() {
                                     <Clock className="h-6 w-6 text-yellow-600" />
                                 </div>
                                 <div className="stat-info">
-                                    <p className="stat-label">Pendientes</p>
+                                    <p className="stat-label">{t('pending')}</p>
                                     <p className="stat-value">
                                         {orders.filter(order => order.status === 'pending').length}
                                     </p>
@@ -151,7 +153,7 @@ function WaiterDashboardPage() {
                                     <ChefHat className="h-6 w-6 text-blue-600" />
                                 </div>
                                 <div className="stat-info">
-                                    <p className="stat-label">Preparando</p>
+                                    <p className="stat-label">{t('preparing')}</p>
                                     <p className="stat-value">
                                         {orders.filter(order => order.status === 'preparing').length}
                                     </p>
@@ -165,7 +167,7 @@ function WaiterDashboardPage() {
                                     <CheckCircle className="h-6 w-6 text-green-600" />
                                 </div>
                                 <div className="stat-info">
-                                    <p className="stat-label">Listos</p>
+                                    <p className="stat-label">{t('ready')}</p>
                                     <p className="stat-value">
                                         {orders.filter(order => order.status === 'ready').length}
                                     </p>
@@ -179,7 +181,7 @@ function WaiterDashboardPage() {
                                     <CheckCircle2 className="h-6 w-6 text-gray-600" />
                                 </div>
                                 <div className="stat-info">
-                                    <p className="stat-label">Entregados</p>
+                                    <p className="stat-label">{t('delivered')}</p>
                                     <p className="stat-value">
                                         {orders.filter(order => order.status === 'delivered').length}
                                     </p>
@@ -191,14 +193,14 @@ function WaiterDashboardPage() {
                     {/* Orders List */}
                     <div className="orders-container">
                         <div className="orders-header">
-                            <h2 className="orders-title">Pedidos</h2>
+                            <h2 className="orders-title">{t('orders')}</h2>
                         </div>
                         <div className="orders-list">
                             {orders.length === 0 ? (
                                 <EmptyState
                                     icon="📋"
-                                    title="No hay pedidos"
-                                    description="No hay pedidos pendientes en este momento."
+                                    title={t('noOrders')}
+                                    description={t('noOrdersDescription')}
                                 />
                             ) : (
                                 orders.map((order) => (
@@ -212,13 +214,13 @@ function WaiterDashboardPage() {
                                                 </div>
                                                 <div className="order-details">
                                                     <p className="table-title">
-                                                        Mesa {order.table_number}
+                                                        {t('tableNumber', { number: order.table_number })}
                                                     </p>
                                                     <p className="order-summary">
-                                                        {order.products?.length || 0} productos
+                                                        {order.products?.length || 0} {t('products')}
                                                     </p>
                                                     <p className="order-total">
-                                                        Total: €{order.total?.toFixed(2) || '0.00'}
+                                                        {t('total')}: €{order.total?.toFixed(2) || '0.00'}
                                                     </p>
                                                 </div>
                                                 <div className="order-status">
@@ -260,7 +262,7 @@ function WaiterDashboardPage() {
                                                     size="small"
                                                     className="action-button"
                                                 >
-                                                    {updatingOrder === order.id ? 'Actualizando...' : 'Siguiente Estado'}
+                                                    {updatingOrder === order.id ? t('updating') : t('nextStatus')}
                                                 </Button>
                                             )}
                                         </div>

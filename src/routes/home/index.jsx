@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import HeroSection from '../../components/HeroSection/index.jsx';
 import SearchBar from '../../components/ui/SearchBar/index.jsx';
@@ -19,6 +20,7 @@ function HomePage() {
     const { getCartCount } = useCart();
     const { isMobile, isTablet, isDesktop } = useDeviceType();
     const toast = useToast();
+    const { t } = useI18n();
 
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
@@ -42,7 +44,7 @@ function HomePage() {
                 setFilteredProducts(productsData);
             } catch (error) {
                 console.error('Error loading data:', error);
-                toast.showError('Error al cargar los datos. Por favor, recarga la página.');
+                toast.showError(t('errorLoadingData'));
             } finally {
                 setLoading(false);
             }
@@ -117,12 +119,12 @@ function HomePage() {
             {showAllProducts ? (
                 <ProductGrid
                     products={filteredProducts}
-                    title="All Products"
+                    title={t('allProducts')}
                 />
             ) : (
                 <PopularSection
                     products={filteredProducts}
-                    title={selectedCategory ? selectedCategory.name : "Popular"}
+                    title={selectedCategory ? selectedCategory.name : t('popular')}
                     showViewAll={!selectedCategory && filteredProducts.length > 4}
                     onViewAll={handleViewAll}
                 />

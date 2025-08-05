@@ -1,13 +1,16 @@
 import React from 'react';
+import { useI18n } from '../../../context/I18nContext.jsx';
 import './styles.css';
 
 const LoadingSpinner = ({
     size = 'medium',
-    text = 'Loading...',
+    text,
     className = '',
     color = '#ff6b6b',
     ...props
 }) => {
+    const { t } = useI18n();
+    const loadingText = text || t('loading');
     const sizeMap = {
         small: '24px',
         medium: '40px',
@@ -40,9 +43,9 @@ const LoadingSpinner = ({
                     animation: 'spin 1s linear infinite'
                 }}
             />
-            {text && (
+            {loadingText && (
                 <p className="loading-spinner__text" style={{ color: '#666', fontSize: '16px' }}>
-                    {text}
+                    {loadingText}
                 </p>
             )}
             <style>{`

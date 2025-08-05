@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import SearchBar from '../../components/ui/SearchBar/index.jsx';
 import CategoryFilter from '../../components/CategoryFilter/index.jsx';
@@ -15,6 +16,7 @@ function MenuPage() {
     const navigate = useNavigate();
     const { getCartCount } = useCart();
     const { isMobile } = useDeviceType();
+    const { t } = useI18n();
 
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
@@ -80,7 +82,7 @@ function MenuPage() {
 
     if (loading) {
         return (
-            <Layout title="Menú" showBack={true}>
+            <Layout title={t('menu')} showBack={true}>
                 <LoadingSpinner />
             </Layout>
         );
@@ -89,7 +91,7 @@ function MenuPage() {
     const cartCount = getCartCount();
 
     return (
-        <Layout title="Menú" showBack={true}>
+        <Layout title={t('menu')} showBack={true}>
             <div className="menu-page">
                 <SearchBar onSearch={handleSearch} />
 
@@ -101,7 +103,7 @@ function MenuPage() {
 
                 <ProductGrid
                     products={filteredProducts}
-                    title={selectedCategory ? selectedCategory.name : "Todos los Productos"}
+                    title={selectedCategory ? selectedCategory.name : t('allProducts')}
                 />
 
                 {/* Cart button - only show on mobile */}

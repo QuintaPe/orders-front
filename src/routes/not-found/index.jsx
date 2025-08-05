@@ -1,11 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import { Button } from '../../components/ui';
 import './styles.css';
 
 function NotFoundPage() {
     const navigate = useNavigate();
+    const { t } = useI18n();
 
     const handleGoHome = () => {
         navigate('/');
@@ -16,13 +18,13 @@ function NotFoundPage() {
     };
 
     return (
-        <Layout title="Página no encontrada">
+        <Layout title={t('pageNotFound')}>
             <div className="not-found-page">
                 <div className="not-found-content">
                     <div className="not-found-icon">404</div>
-                    <h1 className="not-found-title">Página no encontrada</h1>
+                    <h1 className="not-found-title">{t('pageNotFound')}</h1>
                     <p className="not-found-description">
-                        Lo sentimos, la página que buscas no existe o ha sido movida.
+                        {t('pageNotFoundDescription')}
                     </p>
                     <div className="not-found-actions">
                         <Button
@@ -31,7 +33,7 @@ function NotFoundPage() {
                             size="medium"
                             className="back-button"
                         >
-                            Volver
+                            {t('goBack')}
                         </Button>
                         <Button
                             onClick={handleGoHome}
@@ -39,7 +41,7 @@ function NotFoundPage() {
                             size="medium"
                             className="home-button"
                         >
-                            Ir al Inicio
+                            {t('goHome')}
                         </Button>
                     </div>
                 </div>

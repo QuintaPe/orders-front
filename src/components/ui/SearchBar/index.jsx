@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import { useI18n } from '../../../context/I18nContext.jsx';
 import Input from '../Input';
 import './styles.css';
 
 const SearchBar = ({
     onSearch,
-    placeholder = "Find your food here...",
+    placeholder,
     className = '',
     size = 'medium',
     ...props
 }) => {
+    const { t } = useI18n();
     const [searchTerm, setSearchTerm] = useState('');
+
+    // Use provided placeholder or default translation
+    const searchPlaceholder = placeholder || t('searchPlaceholder');
 
     const handleSearch = (e) => {
         const value = e.target.value;
@@ -23,7 +28,7 @@ const SearchBar = ({
         <div className={`search-container ${className}`}>
             <Input
                 type="text"
-                placeholder={placeholder}
+                placeholder={searchPlaceholder}
                 value={searchTerm}
                 onChange={handleSearch}
                 icon="🔍"

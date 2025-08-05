@@ -26,6 +26,23 @@
     gap: 12px;
 }
 
+/* Language Selector in Navigation */
+.nav-language-selector {
+    margin-right: 8px;
+}
+
+.nav-language-selector .language-selector__button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.nav-language-selector .language-selector__button:hover {
+    background: var(--bg-secondary);
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+}
+
 /* Logo Styles */
 .nav-logo {
     background: none;

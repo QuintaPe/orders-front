@@ -3,13 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
-import { Button } from '../ui';
+import { useI18n } from '../../context/I18nContext.jsx';
+import { Button, LanguageSelector } from '../ui';
 import './styles.css';
 
 function NavigationBar() {
     const navigate = useNavigate();
     const { user, isAuthenticated, logout } = useAuth();
     const { getCartCount } = useCart();
+    const { t } = useI18n();
 
     const handleLogoClick = () => {
         navigate('/');
@@ -42,10 +44,12 @@ function NavigationBar() {
             </div>
 
             <div className="nav-right">
+                <LanguageSelector size="small" className="nav-language-selector" />
+
                 <button
                     className="nav-button nav-button--cart"
                     onClick={handleCartClick}
-                    aria-label="Ver carrito"
+                    aria-label={t('cart')}
                 >
                     <ShoppingCart size={24} />
                     {getCartCount() > 0 && (
@@ -57,7 +61,7 @@ function NavigationBar() {
                     <button
                         className="nav-button nav-button--user"
                         onClick={handleUserClick}
-                        aria-label="Menú de usuario"
+                        aria-label={t('profile')}
                     >
                         <User size={24} />
                     </button>

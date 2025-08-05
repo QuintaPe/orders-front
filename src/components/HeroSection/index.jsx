@@ -1,7 +1,10 @@
 import React from 'react';
+import { useI18n } from '../../context/I18nContext.jsx';
 import './styles.css';
 
 function HeroSection() {
+    const { t } = useI18n();
+
     return (
         <div className="hero-section">
             <div className="hero-overlay"></div>
@@ -18,14 +21,14 @@ function HeroSection() {
                     marginBottom: '10px',
                     textShadow: '0 2px 4px rgba(0,0,0,0.3)'
                 }}>
-                    Delicious Food
+                    {t('heroTitle')}
                 </h1>
                 <p style={{
                     fontSize: '16px',
                     opacity: 0.9,
                     textShadow: '0 1px 2px rgba(0,0,0,0.3)'
                 }}>
-                    Fresh ingredients, amazing taste
+                    {t('heroSubtitle')}
                 </p>
             </div>
         </div>
