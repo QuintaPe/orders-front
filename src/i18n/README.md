@@ -67,6 +67,7 @@ function Header() {
 | English | `en` | 🇺🇸 | English |
 | Italian | `it` | 🇮🇹 | Italiano |
 | German | `de` | 🇩🇪 | Deutsch |
+| Spanish | `es` | 🇪🇸 | Español |
 
 ## Translation Keys
 
@@ -103,6 +104,7 @@ export const LANGUAGES = {
   en: { name: 'English', flag: '🇺🇸', translations: en },
   it: { name: 'Italiano', flag: '🇮🇹', translations: it },
   de: { name: 'Deutsch', flag: '🇩🇪', translations: de },
+  es: { name: 'Español', flag: '🇪🇸', translations: es },
   fr: { name: 'Français', flag: '🇫🇷', translations: fr } // New language
 };
 ```
@@ -120,6 +122,7 @@ export default {
   newFeature: 'New Feature', // en
   newFeature: 'Nuova Funzionalità', // it
   newFeature: 'Neue Funktion', // de
+  newFeature: 'Nueva Funcionalidad', // es
 };
 
 // Use in component
