@@ -6,7 +6,6 @@ import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import { Button, Card, Badge } from '../../components/ui';
 import { useCart } from '../../context/CartContext.jsx';
 import { ProductsRepository } from '../../modules/index.js';
-import './styles.css';
 
 function ProductDetailPage() {
     const { id } = useParams();

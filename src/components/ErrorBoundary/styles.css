@@ -7,17 +7,17 @@
     height: 100vh;
     text-align: center;
     padding: 20px;
-    background: #f8f9fa;
+    background: var(--bg-gradient-primary);
 }
 
 .error-boundary h1 {
-    color: #dc3545;
+    color: var(--danger-color);
     margin-bottom: 16px;
     font-size: 24px;
 }
 
 .error-boundary p {
-    color: #6c757d;
+    color: var(--text-secondary);
     font-size: 16px;
     margin: 0;
 }

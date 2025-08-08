@@ -1,16 +1,17 @@
 /* CartItem Component */
 .cart-item {
-    background: var(--bg-primary);
-    border-radius: 1rem;
+    background: var(--bg-gradient-card);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
     margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
 }
 
 .cart-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-primary-hover);
     border-color: var(--primary-color);
 }
 
@@ -27,13 +28,13 @@
 .cart-item-icon {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-md);
 }
 
 .cart-item-info {
@@ -63,20 +64,20 @@
     width: 32px;
     height: 32px;
     border: none;
-    background: var(--bg-secondary);
+    background: var(--bg-gradient-secondary);
     color: var(--text-secondary);
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
     flex-shrink: 0;
 }
 
 .remove-item-btn:hover {
-    background: var(--danger-color);
-    color: white;
+    background: var(--danger-gradient);
+    color: var(--text-inverse);
     transform: scale(1.1);
 }
 

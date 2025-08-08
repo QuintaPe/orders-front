@@ -32,22 +32,22 @@
 
 .toast--success {
     border-left-color: var(--success-color);
-    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    background: var(--bg-gradient-secondary);
 }
 
 .toast--error {
     border-left-color: var(--danger-color);
-    background: linear-gradient(135deg, #fef2f2 0%, #fef2f2 100%);
+    background: var(--bg-gradient-secondary);
 }
 
 .toast--warning {
     border-left-color: var(--warning-color);
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    background: var(--bg-gradient-secondary);
 }
 
 .toast--info {
     border-left-color: var(--info-color);
-    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    background: var(--bg-gradient-secondary);
 }
 
 .toast-icon {

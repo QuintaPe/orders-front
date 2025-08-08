@@ -9,6 +9,7 @@ import NotFoundPage from './routes/not-found/index.jsx'
 import LoginPage from './routes/login/index.jsx'
 import WaiterDashboardPage from './routes/waiter-dashboard/index.jsx'
 import AdminDashboardPage from './routes/admin-dashboard/index.jsx'
+import ProfilePage from './routes/profile/index.jsx'
 import ProtectedRoute from './components/ProtectedRoute/index.jsx'
 import ErrorBoundary from './components/ErrorBoundary/index.jsx'
 import { CartProvider } from './context/CartContext.jsx'
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute requiredRole="admin">
             <AdminDashboardPage />
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         )
       },

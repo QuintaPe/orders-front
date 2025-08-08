@@ -3,7 +3,6 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { LoadingSpinner } from '../ui';
 import { useToast } from '../ui';
-import './styles.css';
 
 function ProtectedRoute({ children, requiredRole = null, allowedRoles = [] }) {
     const { isAuthenticated, loading, user } = useAuth();

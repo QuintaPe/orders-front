@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Users, Package, Tags, ClipboardList } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useI18n } from '../../context/I18nContext.jsx';
@@ -22,9 +21,8 @@ function AdminDashboardPage() {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [updatingItem, setUpdatingItem] = useState(null);
-    const { user, logout, isAuthenticated } = useAuth();
+    const { user, isAuthenticated } = useAuth();
     const { t } = useI18n();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -55,10 +53,7 @@ function AdminDashboardPage() {
         }
     };
 
-    const handleLogout = async () => {
-        await logout();
-        navigate('/login');
-    };
+
 
     const deleteUser = async (userId) => {
         if (!confirm(t('confirmDeleteUser'))) return;
@@ -141,26 +136,6 @@ function AdminDashboardPage() {
     return (
         <Layout title={t('adminDashboard')}>
             <div className="admin-dashboard">
-                {/* Header */}
-                <div className="dashboard-header">
-                    <div className="header-content">
-                        <div>
-                            <h1 className="dashboard-title">
-                                {t('adminDashboard')}
-                            </h1>
-                            <p className="dashboard-subtitle">
-                                {t('welcome')}, {user?.name || user?.username}
-                            </p>
-                        </div>
-                        <button
-                            onClick={handleLogout}
-                            className="logout-button"
-                        >
-                            {t('logout')}
-                        </button>
-                    </div>
-                </div>
-
                 {/* Navigation Tabs */}
                 <div className="dashboard-nav">
                     <div className="nav-content">

@@ -6,6 +6,7 @@ export { default as NotFoundPage } from './not-found/index.jsx';
 export { default as LoginPage } from './login/index.jsx';
 export { default as WaiterDashboardPage } from './waiter-dashboard/index.jsx';
 export { default as AdminDashboardPage } from './admin-dashboard/index.jsx';
+export { default as ProfilePage } from './profile/index.jsx';
 
 // Route Configuration
 export const routes = [
@@ -38,6 +39,11 @@ export const routes = [
         path: '/admin/dashboard',
         element: 'AdminDashboardPage',
         title: 'Dashboard Administrador'
+    },
+    {
+        path: '/profile',
+        element: 'ProfilePage',
+        title: 'Profile'
     },
     {
         path: '*',

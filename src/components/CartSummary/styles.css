@@ -1,10 +1,11 @@
 /* CartSummary Component */
 .cart-summary {
-    background: var(--bg-primary);
-    border-radius: 1rem;
+    background: var(--bg-gradient-card);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(10px);
 }
 
 .cart-summary-content {
@@ -31,9 +32,9 @@
     font-size: 0.875rem;
     color: var(--text-secondary);
     font-weight: 500;
-    background: var(--bg-secondary);
+    background: var(--bg-gradient-secondary);
     padding: 0.5rem 1rem;
-    border-radius: 2rem;
+    border-radius: var(--radius-full);
 }
 
 .cart-summary-details {
@@ -88,32 +89,32 @@
 
 .clear-cart-btn {
     flex: 1;
-    background: var(--bg-secondary);
+    background: var(--bg-gradient-secondary);
     color: var(--text-secondary);
     border: 1px solid var(--border-light);
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
 }
 
 .clear-cart-btn:hover {
-    background: var(--danger-color);
-    color: white;
+    background: var(--danger-gradient);
+    color: var(--text-inverse);
     border-color: var(--danger-color);
     transform: translateY(-1px);
 }
 
 .place-order-btn {
     flex: 2;
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-gradient);
+    color: var(--text-inverse);
     border: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-primary);
 }
 
 .place-order-btn:hover {
-    background: var(--primary-dark);
+    background: var(--primary-gradient-hover);
     transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    box-shadow: var(--shadow-primary-hover);
 }
 
 .place-order-btn:active {

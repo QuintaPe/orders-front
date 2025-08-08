@@ -92,49 +92,49 @@
 .button--danger {
     background: var(--danger-gradient);
     color: var(--text-inverse);
-    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.25);
+    box-shadow: var(--shadow-primary);
 }
 
 .button--danger:hover {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    background: linear-gradient(135deg, var(--danger-dark) 0%, #b91c1c 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px 0 rgba(239, 68, 68, 0.35);
+    box-shadow: var(--shadow-primary-hover);
 }
 
 .button--success {
     background: var(--success-gradient);
     color: var(--text-inverse);
-    box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25);
+    box-shadow: var(--shadow-primary);
 }
 
 .button--success:hover {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, var(--success-dark) 0%, #047857 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px 0 rgba(16, 185, 129, 0.35);
+    box-shadow: var(--shadow-primary-hover);
 }
 
 .button--warning {
     background: var(--warning-gradient);
     color: var(--text-inverse);
-    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.25);
+    box-shadow: var(--shadow-primary);
 }
 
 .button--warning:hover {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    background: linear-gradient(135deg, var(--warning-dark) 0%, #b45309 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px 0 rgba(245, 158, 11, 0.35);
+    box-shadow: var(--shadow-primary-hover);
 }
 
 .button--info {
     background: var(--info-gradient);
     color: var(--text-inverse);
-    box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25);
+    box-shadow: var(--shadow-primary);
 }
 
 .button--info:hover {
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    background: linear-gradient(135deg, var(--info-dark) 0%, #1d4ed8 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px 0 rgba(59, 130, 246, 0.35);
+    box-shadow: var(--shadow-primary-hover);
 }
 
 .button--small {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Clock, ChefHat, CheckCircle, CheckCircle2, Wifi, WifiOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useWebSocket } from '../../context/WebSocketContext.jsx';
@@ -13,9 +12,8 @@ import './styles.css';
 function WaiterDashboardPage() {
     const [loading, setLoading] = useState(true);
     const [updatingOrder, setUpdatingOrder] = useState(null);
-    const { user, logout, isAuthenticated } = useAuth();
+    const { user, isAuthenticated } = useAuth();
     const { orders, setOrders, isConnected } = useWebSocket();
-    const navigate = useNavigate();
     const { t } = useI18n();
 
     useEffect(() => {
@@ -51,10 +49,7 @@ function WaiterDashboardPage() {
         }
     };
 
-    const handleLogout = async () => {
-        await logout();
-        navigate('/login');
-    };
+
 
     const getStatusColor = (status) => {
         switch (status) {
@@ -106,39 +101,6 @@ function WaiterDashboardPage() {
     return (
         <Layout title={t('waiterDashboard')}>
             <div className="waiter-dashboard">
-                {/* Header */}
-                <div className="dashboard-header">
-                    <div className="header-content">
-                        <div>
-                            <h1 className="dashboard-title">
-                                {t('waiterDashboard')}
-                            </h1>
-                            <p className="dashboard-subtitle">
-                                {t('welcomeUser', { name: user?.name || user?.username })}
-                            </p>
-                            <div className="connection-status">
-                                {isConnected ? (
-                                    <div className="status-connected">
-                                        <Wifi className="h-4 w-4" />
-                                        <span>{t('realTimeConnected')}</span>
-                                    </div>
-                                ) : (
-                                    <div className="status-disconnected">
-                                        <WifiOff className="h-4 w-4" />
-                                        <span>{t('disconnected')}</span>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <button
-                            onClick={handleLogout}
-                            className="logout-button"
-                        >
-                            {t('logout')}
-                        </button>
-                    </div>
-                </div>
-
                 {/* Content */}
                 <div className="dashboard-content">
                     {/* Stats */}

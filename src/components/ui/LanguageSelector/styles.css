@@ -8,24 +8,24 @@
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
+    background: var(--bg-gradient-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
     cursor: pointer;
     font-size: 14px;
-    color: var(--color-text);
-    transition: all 0.2s ease;
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
     min-width: 120px;
 }
 
 .language-selector__button:hover {
-    background: var(--color-background-hover);
-    border-color: var(--color-primary);
+    background: var(--bg-gradient-primary);
+    border-color: var(--primary-color);
 }
 
 .language-selector__button:focus {
     outline: none;
-    box-shadow: 0 0 0 2px var(--color-primary-light);
+    box-shadow: var(--shadow-primary);
 }
 
 .language-selector__flag {
@@ -43,8 +43,8 @@
 
 .language-selector__arrow {
     font-size: 10px;
-    transition: transform 0.2s ease;
-    color: var(--color-text-secondary);
+    transition: transform var(--transition-fast);
+    color: var(--text-secondary);
 }
 
 .language-selector__arrow.open {
@@ -56,10 +56,10 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: var(--bg-gradient-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
     z-index: 1000;
     margin-top: 4px;
     max-height: 200px;
@@ -76,27 +76,27 @@
     border: none;
     cursor: pointer;
     font-size: 14px;
-    color: var(--color-text);
+    color: var(--text-primary);
     text-align: left;
-    transition: background-color 0.2s ease;
+    transition: background-color var(--transition-fast);
 }
 
 .language-selector__option:hover {
-    background: var(--color-background-hover);
+    background: var(--bg-gradient-secondary);
 }
 
 .language-selector__option.active {
-    background: var(--color-primary-light);
-    color: var(--color-primary);
+    background: var(--primary-light);
+    color: var(--primary-color);
     font-weight: 500;
 }
 
 .language-selector__option:first-child {
-    border-radius: 6px 6px 0 0;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 .language-selector__option:last-child {
-    border-radius: 0 0 6px 6px;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
 /* Size variants */

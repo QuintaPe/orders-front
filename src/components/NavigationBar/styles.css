@@ -172,6 +172,26 @@
     box-shadow: var(--shadow-primary);
 }
 
+/* User Dropdown Integration */
+.nav-right .user-dropdown {
+    margin-left: 0.5rem;
+}
+
+.nav-right .user-dropdown .user-dropdown-trigger {
+    min-width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .nav-right .user-dropdown .user-dropdown-trigger {
+        min-width: auto;
+        padding: 0.5rem 0.75rem;
+        justify-content: flex-start;
+    }
+}
+
 .cart-badge {
     position: absolute;
     top: 4px;
