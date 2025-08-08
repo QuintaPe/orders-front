@@ -9,43 +9,69 @@
 .input {
     width: 100%;
     border: 2px solid var(--border-light);
-    border-radius: 1rem;
+    border-radius: var(--radius-lg);
     padding: 1rem 1.25rem;
     font-size: 1rem;
-    transition: all 0.3s ease;
-    background: var(--bg-primary);
+    transition: all var(--transition-normal);
+    background: var(--bg-gradient-secondary);
     font-family: inherit;
     color: var(--text-primary);
     font-weight: 500;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.input::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
 }
 
 .input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.1);
-    transform: translateY(-1px);
+    box-shadow: var(--shadow-primary);
+    transform: translateY(-2px);
+    background: var(--bg-gradient-primary);
+}
+
+.input:focus::before {
+    opacity: 0.02;
 }
 
 .input::placeholder {
     color: var(--text-light);
+    transition: color var(--transition-normal);
+}
+
+.input:focus::placeholder {
+    color: var(--text-secondary);
 }
 
 .input--small {
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
 }
 
 .input--medium {
     padding: 1rem 1.25rem;
     font-size: 1rem;
-    border-radius: 1rem;
+    border-radius: var(--radius-lg);
 }
 
 .input--large {
     padding: 1.25rem 1.5rem;
     font-size: 1.125rem;
-    border-radius: 1.25rem;
+    border-radius: var(--radius-xl);
 }
 
 .input--full-width {
@@ -53,18 +79,30 @@
 }
 
 .input--disabled {
-    background: var(--bg-secondary);
+    background: var(--bg-tertiary);
     color: var(--text-light);
     cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .input--error {
     border-color: var(--danger-color);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
 
 .input--error:focus {
     border-color: var(--danger-color);
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.input--success {
+    border-color: var(--success-color);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.input--success:focus {
+    border-color: var(--success-color);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
 }
 
 .input--with-icon {
@@ -83,12 +121,14 @@
     justify-content: center;
     color: var(--text-secondary);
     font-size: 1.125rem;
-    transition: color 0.3s ease;
+    transition: all var(--transition-normal);
+    z-index: 1;
 }
 
 .input:focus+.input-icon,
 .input:focus~.input-icon {
     color: var(--primary-color);
+    transform: scale(1.1);
 }
 
 .input-icon--left {
@@ -97,4 +137,71 @@
 
 .input-icon--right {
     right: 1rem;
+}
+
+/* Glass effect input */
+.input--glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--glass-shadow);
+}
+
+.input--glass:focus {
+    background: var(--glass-bg);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-primary);
+}
+
+/* Gradient border input */
+.input--gradient-border {
+    border: 2px solid transparent;
+    background: var(--bg-gradient-secondary);
+    background-clip: padding-box;
+    position: relative;
+}
+
+.input--gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    border-radius: inherit;
+    padding: 2px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+}
+
+.input--gradient-border:focus::before {
+    background: var(--primary-gradient-hover);
+}
+
+/* Floating label input */
+.input--floating {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.input--floating+.input-label {
+    position: absolute;
+    top: 1rem;
+    left: 1.25rem;
+    color: var(--text-light);
+    transition: all var(--transition-normal);
+    pointer-events: none;
+    font-size: 1rem;
+}
+
+.input--floating:focus+.input-label,
+.input--floating:not(:placeholder-shown)+.input-label {
+    top: 0.5rem;
+    left: 1.25rem;
+    font-size: 0.75rem;
+    color: var(--primary-color);
+    font-weight: 600;
 }

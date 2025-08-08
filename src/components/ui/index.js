@@ -8,4 +8,5 @@ export { default as Badge } from './Badge';
 export { ToastProvider, useToast } from './Toast';
 export { default as EmptyState } from './EmptyState';
 export { default as WebSocketStatus } from '../WebSocketStatus';
-export { default as LanguageSelector } from './LanguageSelector'; 
+export { default as LanguageSelector } from './LanguageSelector';
+export { default as ThemeToggle } from './ThemeToggle'; 

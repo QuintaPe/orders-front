@@ -87,6 +87,18 @@ function WaiterDashboardPage() {
         }
     };
 
+    const getNextStatusText = (currentStatus) => {
+        const nextStatus = getNextStatus(currentStatus);
+        if (!nextStatus) return '';
+
+        switch (nextStatus) {
+            case 'preparing': return t('markAsPreparing');
+            case 'ready': return t('markAsReady');
+            case 'delivered': return t('markAsDelivered');
+            default: return t('nextStatus');
+        }
+    };
+
     if (loading) {
         return <LoadingSpinner />;
     }
@@ -118,14 +130,12 @@ function WaiterDashboardPage() {
                                 )}
                             </div>
                         </div>
-                        <Button
+                        <button
                             onClick={handleLogout}
-                            variant="outline"
-                            size="medium"
                             className="logout-button"
                         >
                             {t('logout')}
-                        </Button>
+                        </button>
                     </div>
                 </div>
 
@@ -133,10 +143,10 @@ function WaiterDashboardPage() {
                 <div className="dashboard-content">
                     {/* Stats */}
                     <div className="stats-grid">
-                        <Card className="stat-card" padding="medium" shadow="small">
+                        <div className="stat-card">
                             <div className="stat-content">
                                 <div className="stat-icon stat-icon-pending">
-                                    <Clock className="h-6 w-6 text-yellow-600" />
+                                    <Clock className="h-6 w-6" />
                                 </div>
                                 <div className="stat-info">
                                     <p className="stat-label">{t('pending')}</p>
@@ -145,12 +155,12 @@ function WaiterDashboardPage() {
                                     </p>
                                 </div>
                             </div>
-                        </Card>
+                        </div>
 
-                        <Card className="stat-card" padding="medium" shadow="small">
+                        <div className="stat-card">
                             <div className="stat-content">
                                 <div className="stat-icon stat-icon-preparing">
-                                    <ChefHat className="h-6 w-6 text-blue-600" />
+                                    <ChefHat className="h-6 w-6" />
                                 </div>
                                 <div className="stat-info">
                                     <p className="stat-label">{t('preparing')}</p>
@@ -159,12 +169,12 @@ function WaiterDashboardPage() {
                                     </p>
                                 </div>
                             </div>
-                        </Card>
+                        </div>
 
-                        <Card className="stat-card" padding="medium" shadow="small">
+                        <div className="stat-card">
                             <div className="stat-content">
                                 <div className="stat-icon stat-icon-ready">
-                                    <CheckCircle className="h-6 w-6 text-green-600" />
+                                    <CheckCircle className="h-6 w-6" />
                                 </div>
                                 <div className="stat-info">
                                     <p className="stat-label">{t('ready')}</p>
@@ -173,12 +183,12 @@ function WaiterDashboardPage() {
                                     </p>
                                 </div>
                             </div>
-                        </Card>
+                        </div>
 
-                        <Card className="stat-card" padding="medium" shadow="small">
+                        <div className="stat-card">
                             <div className="stat-content">
                                 <div className="stat-icon stat-icon-delivered">
-                                    <CheckCircle2 className="h-6 w-6 text-gray-600" />
+                                    <CheckCircle2 className="h-6 w-6" />
                                 </div>
                                 <div className="stat-info">
                                     <p className="stat-label">{t('delivered')}</p>
@@ -187,7 +197,7 @@ function WaiterDashboardPage() {
                                     </p>
                                 </div>
                             </div>
-                        </Card>
+                        </div>
                     </div>
 
                     {/* Orders List */}
@@ -204,7 +214,7 @@ function WaiterDashboardPage() {
                                 />
                             ) : (
                                 orders.map((order) => (
-                                    <Card key={order.id} className={`order-item ${order.isNew ? 'new-order' : ''}`} padding="medium" shadow="small">
+                                    <div key={order.id} className={`order-item ${order.isNew ? 'new-order' : ''}`}>
                                         <div className="order-content">
                                             <div className="order-header">
                                                 <div className="table-info">
@@ -224,16 +234,9 @@ function WaiterDashboardPage() {
                                                     </p>
                                                 </div>
                                                 <div className="order-status">
-                                                    <Badge
-                                                        variant={order.status === 'pending' ? 'warning' :
-                                                            order.status === 'preparing' ? 'info' :
-                                                                order.status === 'ready' ? 'success' :
-                                                                    order.status === 'delivered' ? 'default' : 'danger'}
-                                                        size="small"
-                                                        className="status-badge"
-                                                    >
+                                                    <span className={`status-badge ${getStatusColor(order.status)}`}>
                                                         {getStatusText(order.status)}
-                                                    </Badge>
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -255,18 +258,16 @@ function WaiterDashboardPage() {
                                         {/* Action Buttons */}
                                         <div className="order-actions">
                                             {getNextStatus(order.status) && (
-                                                <Button
+                                                <button
                                                     onClick={() => handleUpdateOrderStatus(order.id, getNextStatus(order.status))}
                                                     disabled={updatingOrder === order.id}
-                                                    variant="primary"
-                                                    size="small"
                                                     className="action-button"
                                                 >
-                                                    {updatingOrder === order.id ? t('updating') : t('nextStatus')}
-                                                </Button>
+                                                    {updatingOrder === order.id ? t('updating') : getNextStatusText(order.status)}
+                                                </button>
                                             )}
                                         </div>
-                                    </Card>
+                                    </div>
                                 ))
                             )}
                         </div>

@@ -4,7 +4,7 @@ import { ShoppingCart, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { useI18n } from '../../context/I18nContext.jsx';
-import { Button, LanguageSelector } from '../ui';
+import { Button, LanguageSelector, ThemeToggle } from '../ui';
 import './styles.css';
 
 function NavigationBar() {
@@ -45,6 +45,8 @@ function NavigationBar() {
 
             <div className="nav-right">
                 <LanguageSelector size="small" className="nav-language-selector" />
+
+                <ThemeToggle size="small" className="nav-theme-toggle" />
 
                 <button
                     className="nav-button nav-button--cart"

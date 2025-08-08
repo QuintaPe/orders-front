@@ -45,6 +45,7 @@ export default {
     searchResults: 'Risultati di ricerca',
     noResults: 'Nessun risultato trovato',
     searchFor: 'Cerca per',
+    searchProducts: 'Cerca prodotti...',
 
     // Categories
     popular: 'Popolare',

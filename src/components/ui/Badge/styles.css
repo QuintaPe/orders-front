@@ -6,40 +6,71 @@
     min-width: 20px;
     height: 20px;
     padding: 0 6px;
-    border-radius: 10px;
+    border-radius: var(--radius-full);
     font-size: 12px;
     font-weight: 600;
     white-space: nowrap;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.badge:hover::before {
+    opacity: 1;
 }
 
 .badge--default {
-    background: var(--text-secondary);
-    color: var(--bg-primary);
+    background: var(--bg-gradient-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 
 .badge--primary {
-    background: var(--primary-color);
-    color: var(--bg-primary);
+    background: var(--primary-gradient);
+    color: var(--text-inverse);
+    box-shadow: var(--shadow-primary);
 }
 
 .badge--success {
-    background: var(--success-color);
-    color: var(--bg-primary);
+    background: var(--success-gradient);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 8px 0 rgba(16, 185, 129, 0.25);
 }
 
 .badge--warning {
-    background: var(--warning-color);
-    color: var(--text-primary);
+    background: var(--warning-gradient);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 8px 0 rgba(245, 158, 11, 0.25);
 }
 
 .badge--danger {
-    background: var(--danger-color);
-    color: var(--bg-primary);
+    background: var(--danger-gradient);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 8px 0 rgba(239, 68, 68, 0.25);
 }
 
 .badge--info {
-    background: var(--info-color);
-    color: var(--bg-primary);
+    background: var(--info-gradient);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.25);
+}
+
+.badge--secondary {
+    background: var(--secondary-gradient);
+    color: var(--text-inverse);
+    box-shadow: 0 2px 8px 0 rgba(6, 182, 212, 0.25);
 }
 
 .badge--small {
@@ -67,13 +98,120 @@
     min-width: 8px;
     height: 8px;
     padding: 0;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
 }
 
 .badge-dot {
     width: 4px;
     height: 4px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background: currentColor;
     margin-right: 4px;
+}
+
+/* Glass effect badges */
+.badge--glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    box-shadow: var(--glass-shadow);
+}
+
+.badge--glass.badge--primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.badge--glass.badge--success {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.badge--glass.badge--warning {
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+.badge--glass.badge--danger {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.badge--glass.badge--info {
+    color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+/* Outline badges */
+.badge--outline {
+    background: transparent;
+    border: 1px solid currentColor;
+}
+
+.badge--outline.badge--primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.badge--outline.badge--success {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.badge--outline.badge--warning {
+    color: var(--warning-color);
+    border-color: var(--warning-color);
+}
+
+.badge--outline.badge--danger {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.badge--outline.badge--info {
+    color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+/* Animated badges */
+.badge--pulse {
+    animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+}
+
+.badge--bounce {
+    animation: badgeBounce 1s infinite;
+}
+
+@keyframes badgeBounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-3px);
+    }
+
+    60% {
+        transform: translateY(-1px);
+    }
 }

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
-import SearchBar from '../../components/ui/SearchBar/index.jsx';
-import CategoryFilter from '../../components/CategoryFilter/index.jsx';
 import ProductGrid from '../../components/ProductGrid/index.jsx';
 import AdvancedFilters from '../../components/AdvancedFilters/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
@@ -22,9 +20,9 @@ function MenuPage() {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('all');
     const [loading, setLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     const [viewMode, setViewMode] = useState('grid');
     const [priceRange, setPriceRange] = useState({ min: 0, max: 100 });
     const [sortBy, setSortBy] = useState('name');
@@ -56,16 +54,17 @@ function MenuPage() {
         let filtered = products;
 
         // Filter by category
-        if (selectedCategory) {
+        if (selectedCategory && selectedCategory !== 'all') {
             filtered = filtered.filter(product =>
-                product.category === selectedCategory.name
+                product.category === selectedCategory
             );
         }
 
         // Filter by search term
-        if (searchTerm.trim()) {
+        if (searchQuery.trim()) {
             filtered = filtered.filter(product =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                product.description?.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
 
@@ -91,13 +90,13 @@ function MenuPage() {
         });
 
         setFilteredProducts(filtered);
-    }, [products, selectedCategory, searchTerm, priceRange, sortBy]);
+    }, [products, selectedCategory, searchQuery, priceRange, sortBy]);
 
-    const handleSearch = (term) => {
-        setSearchTerm(term);
+    const handleSearchChange = (query) => {
+        setSearchQuery(query);
     };
 
-    const handleCategorySelect = (category) => {
+    const handleCategoryChange = (category) => {
         setSelectedCategory(category);
     };
 
@@ -117,6 +116,12 @@ function MenuPage() {
         navigate('/cart');
     };
 
+    // Transform categories for the dropdown
+    const categoryOptions = categories.map(category => ({
+        value: category.name,
+        label: category.name
+    }));
+
     if (loading) {
         return (
             <Layout title={t('menu')} showBack={true}>
@@ -131,26 +136,23 @@ function MenuPage() {
         <Layout title={t('menu')} showBack={true}>
             <div className="menu-page">
                 <div className="menu-content">
-                    <SearchBar onSearch={handleSearch} />
-
                     <AdvancedFilters
                         onPriceRangeChange={handlePriceRangeChange}
                         onSortChange={handleSortChange}
                         onViewChange={handleViewModeChange}
+                        onSearchChange={handleSearchChange}
+                        onCategoryChange={handleCategoryChange}
                         viewMode={viewMode}
                         priceRange={priceRange}
                         sortBy={sortBy}
-                    />
-
-                    <CategoryFilter
-                        categories={categories}
+                        searchQuery={searchQuery}
                         selectedCategory={selectedCategory}
-                        onSelectCategory={handleCategorySelect}
+                        categories={categoryOptions}
                     />
 
                     <ProductGrid
                         products={filteredProducts}
-                        title={selectedCategory ? selectedCategory.name : t('allProducts')}
+                        title={selectedCategory !== 'all' ? selectedCategory : t('allProducts')}
                         viewMode={viewMode}
                     />
                 </div>

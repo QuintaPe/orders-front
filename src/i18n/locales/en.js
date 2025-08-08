@@ -45,6 +45,7 @@ export default {
     searchResults: 'Search Results',
     noResults: 'No results found',
     searchFor: 'Search for',
+    searchProducts: 'Search products...',
 
     // Categories
     popular: 'Popular',
@@ -251,6 +252,7 @@ export default {
     markDelivered: 'Mark as Delivered',
 
     // Admin Dashboard
+    adminDashboard: 'Admin Dashboard',
     systemOverview: 'System Overview',
     userManagement: 'User Management',
     productManagement: 'Product Management',
@@ -259,6 +261,17 @@ export default {
     reports: 'Reports',
     backup: 'Backup',
     restore: 'Restore',
+    confirmDeleteUser: 'Are you sure you want to delete this user?',
+    confirmDeleteProduct: 'Are you sure you want to delete this product?',
+    confirmDeleteCategory: 'Are you sure you want to delete this category?',
+    confirmDeleteOrder: 'Are you sure you want to delete this order?',
+    deleting: 'Deleting...',
+    name: 'Name',
+    description: 'Description',
+    category: 'Category',
+    date: 'Date',
+    table: 'Table',
+    tableNumber: 'Table {{number}}',
 
     // Login Page
     loginTitle: 'Sign In',
@@ -306,6 +319,9 @@ export default {
     products: 'products',
     nextStatus: 'Next Status',
     updating: 'Updating...',
+    markAsPreparing: 'Mark as Preparing',
+    markAsReady: 'Mark as Ready',
+    markAsDelivered: 'Mark as Delivered',
 
     // Product Page
     product: 'Product',

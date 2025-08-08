@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Users, Package, Tags, ClipboardList } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.jsx';
+import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import DashboardNav from '../../components/DashboardNav/index.jsx';
@@ -22,6 +23,7 @@ function AdminDashboardPage() {
     const [loading, setLoading] = useState(true);
     const [updatingItem, setUpdatingItem] = useState(null);
     const { user, logout, isAuthenticated } = useAuth();
+    const { t } = useI18n();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -59,7 +61,7 @@ function AdminDashboardPage() {
     };
 
     const deleteUser = async (userId) => {
-        if (!confirm('¿Estás seguro de que quieres eliminar este usuario?')) return;
+        if (!confirm(t('confirmDeleteUser'))) return;
 
         setUpdatingItem(userId);
         try {
@@ -73,7 +75,7 @@ function AdminDashboardPage() {
     };
 
     const deleteProduct = async (productId) => {
-        if (!confirm('¿Estás seguro de que quieres eliminar este producto?')) return;
+        if (!confirm(t('confirmDeleteProduct'))) return;
 
         setUpdatingItem(productId);
         try {
@@ -87,7 +89,7 @@ function AdminDashboardPage() {
     };
 
     const deleteCategory = async (categoryId) => {
-        if (!confirm('¿Estás seguro de que quieres eliminar esta categoría?')) return;
+        if (!confirm(t('confirmDeleteCategory'))) return;
 
         setUpdatingItem(categoryId);
         try {
@@ -101,7 +103,7 @@ function AdminDashboardPage() {
     };
 
     const deleteOrder = async (orderId) => {
-        if (!confirm('¿Estás seguro de que quieres eliminar este pedido?')) return;
+        if (!confirm(t('confirmDeleteOrder'))) return;
 
         setUpdatingItem(orderId);
         try {
@@ -125,9 +127,9 @@ function AdminDashboardPage() {
 
     const getRoleText = (role) => {
         switch (role) {
-            case 'admin': return 'Administrador';
-            case 'manager': return 'Gerente';
-            case 'waiter': return 'Camarero';
+            case 'admin': return t('admin');
+            case 'manager': return t('manager');
+            case 'waiter': return t('waiter');
             default: return role;
         }
     };
@@ -137,24 +139,24 @@ function AdminDashboardPage() {
     }
 
     return (
-        <Layout title="Dashboard Administrador">
+        <Layout title={t('adminDashboard')}>
             <div className="admin-dashboard">
                 {/* Header */}
                 <div className="dashboard-header">
                     <div className="header-content">
                         <div>
                             <h1 className="dashboard-title">
-                                Dashboard Administrador
+                                {t('adminDashboard')}
                             </h1>
                             <p className="dashboard-subtitle">
-                                Bienvenido, {user?.name || user?.username}
+                                {t('welcome')}, {user?.name || user?.username}
                             </p>
                         </div>
                         <button
                             onClick={handleLogout}
                             className="logout-button"
                         >
-                            Cerrar Sesión
+                            {t('logout')}
                         </button>
                     </div>
                 </div>
@@ -174,10 +176,10 @@ function AdminDashboardPage() {
                             <div className="stat-card">
                                 <div className="stat-content">
                                     <div className="stat-icon stat-icon-users">
-                                        <Users className="h-6 w-6 text-blue-600" />
+                                        <Users className="h-6 w-6" />
                                     </div>
                                     <div className="stat-info">
-                                        <p className="stat-label">Usuarios</p>
+                                        <p className="stat-label">{t('users')}</p>
                                         <p className="stat-value">{users.length}</p>
                                     </div>
                                 </div>
@@ -186,10 +188,10 @@ function AdminDashboardPage() {
                             <div className="stat-card">
                                 <div className="stat-content">
                                     <div className="stat-icon stat-icon-products">
-                                        <Package className="h-6 w-6 text-green-600" />
+                                        <Package className="h-6 w-6" />
                                     </div>
                                     <div className="stat-info">
-                                        <p className="stat-label">Productos</p>
+                                        <p className="stat-label">{t('products')}</p>
                                         <p className="stat-value">{products.length}</p>
                                     </div>
                                 </div>
@@ -198,10 +200,10 @@ function AdminDashboardPage() {
                             <div className="stat-card">
                                 <div className="stat-content">
                                     <div className="stat-icon stat-icon-categories">
-                                        <Tags className="h-6 w-6 text-purple-600" />
+                                        <Tags className="h-6 w-6" />
                                     </div>
                                     <div className="stat-info">
-                                        <p className="stat-label">Categorías</p>
+                                        <p className="stat-label">{t('categories')}</p>
                                         <p className="stat-value">{categories.length}</p>
                                     </div>
                                 </div>
@@ -210,10 +212,10 @@ function AdminDashboardPage() {
                             <div className="stat-card">
                                 <div className="stat-content">
                                     <div className="stat-icon stat-icon-orders">
-                                        <ClipboardList className="h-6 w-6 text-orange-600" />
+                                        <ClipboardList className="h-6 w-6" />
                                     </div>
                                     <div className="stat-info">
-                                        <p className="stat-label">Pedidos</p>
+                                        <p className="stat-label">{t('orders')}</p>
                                         <p className="stat-value">{orders.length}</p>
                                     </div>
                                 </div>
@@ -225,16 +227,16 @@ function AdminDashboardPage() {
                     {activeTab === 'users' && (
                         <div className="data-container">
                             <div className="data-header">
-                                <h2 className="data-title">Usuarios</h2>
+                                <h2 className="data-title">{t('users')}</h2>
                             </div>
                             <div className="data-table">
                                 <table className="table">
                                     <thead className="table-header">
                                         <tr>
-                                            <th className="table-th">Usuario</th>
-                                            <th className="table-th">Nombre</th>
-                                            <th className="table-th">Rol</th>
-                                            <th className="table-th">Acciones</th>
+                                            <th className="table-th">{t('username')}</th>
+                                            <th className="table-th">{t('firstName')}</th>
+                                            <th className="table-th">{t('role')}</th>
+                                            <th className="table-th">{t('actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-body">
@@ -253,7 +255,7 @@ function AdminDashboardPage() {
                                                         disabled={updatingItem === user.id}
                                                         className="delete-button"
                                                     >
-                                                        {updatingItem === user.id ? 'Eliminando...' : 'Eliminar'}
+                                                        {updatingItem === user.id ? t('deleting') : t('delete')}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -268,16 +270,16 @@ function AdminDashboardPage() {
                     {activeTab === 'products' && (
                         <div className="data-container">
                             <div className="data-header">
-                                <h2 className="data-title">Productos</h2>
+                                <h2 className="data-title">{t('products')}</h2>
                             </div>
                             <div className="data-table">
                                 <table className="table">
                                     <thead className="table-header">
                                         <tr>
-                                            <th className="table-th">Nombre</th>
-                                            <th className="table-th">Precio</th>
-                                            <th className="table-th">Categoría</th>
-                                            <th className="table-th">Acciones</th>
+                                            <th className="table-th">{t('name')}</th>
+                                            <th className="table-th">{t('price')}</th>
+                                            <th className="table-th">{t('category')}</th>
+                                            <th className="table-th">{t('actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-body">
@@ -292,7 +294,7 @@ function AdminDashboardPage() {
                                                         disabled={updatingItem === product.id}
                                                         className="delete-button"
                                                     >
-                                                        {updatingItem === product.id ? 'Eliminando...' : 'Eliminar'}
+                                                        {updatingItem === product.id ? t('deleting') : t('delete')}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -307,15 +309,15 @@ function AdminDashboardPage() {
                     {activeTab === 'categories' && (
                         <div className="data-container">
                             <div className="data-header">
-                                <h2 className="data-title">Categorías</h2>
+                                <h2 className="data-title">{t('categories')}</h2>
                             </div>
                             <div className="data-table">
                                 <table className="table">
                                     <thead className="table-header">
                                         <tr>
-                                            <th className="table-th">Nombre</th>
-                                            <th className="table-th">Descripción</th>
-                                            <th className="table-th">Acciones</th>
+                                            <th className="table-th">{t('name')}</th>
+                                            <th className="table-th">{t('description')}</th>
+                                            <th className="table-th">{t('actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-body">
@@ -329,7 +331,7 @@ function AdminDashboardPage() {
                                                         disabled={updatingItem === category.id}
                                                         className="delete-button"
                                                     >
-                                                        {updatingItem === category.id ? 'Eliminando...' : 'Eliminar'}
+                                                        {updatingItem === category.id ? t('deleting') : t('delete')}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -344,23 +346,23 @@ function AdminDashboardPage() {
                     {activeTab === 'orders' && (
                         <div className="data-container">
                             <div className="data-header">
-                                <h2 className="data-title">Pedidos</h2>
+                                <h2 className="data-title">{t('orders')}</h2>
                             </div>
                             <div className="data-table">
                                 <table className="table">
                                     <thead className="table-header">
                                         <tr>
-                                            <th className="table-th">Mesa</th>
-                                            <th className="table-th">Estado</th>
-                                            <th className="table-th">Total</th>
-                                            <th className="table-th">Fecha</th>
-                                            <th className="table-th">Acciones</th>
+                                            <th className="table-th">{t('table')}</th>
+                                            <th className="table-th">{t('status')}</th>
+                                            <th className="table-th">{t('total')}</th>
+                                            <th className="table-th">{t('date')}</th>
+                                            <th className="table-th">{t('actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-body">
                                         {orders.map((order) => (
                                             <tr key={order.id} className="table-row">
-                                                <td className="table-td">{order.table_number}</td>
+                                                <td className="table-td">{t('tableNumber', { number: order.table_number })}</td>
                                                 <td className="table-td">
                                                     <span className={`status-badge ${getStatusColor(order.status)}`}>
                                                         {getStatusText(order.status)}
@@ -376,7 +378,7 @@ function AdminDashboardPage() {
                                                         disabled={updatingItem === order.id}
                                                         className="delete-button"
                                                     >
-                                                        {updatingItem === order.id ? 'Eliminando...' : 'Eliminar'}
+                                                        {updatingItem === order.id ? t('deleting') : t('delete')}
                                                     </button>
                                                 </td>
                                             </tr>
@@ -406,11 +408,11 @@ const getStatusColor = (status) => {
 
 const getStatusText = (status) => {
     switch (status) {
-        case 'pending': return 'Pendiente';
-        case 'preparing': return 'Preparando';
-        case 'ready': return 'Listo';
-        case 'delivered': return 'Entregado';
-        case 'cancelled': return 'Cancelado';
+        case 'pending': return 'pending';
+        case 'preparing': return 'preparing';
+        case 'ready': return 'ready';
+        case 'delivered': return 'delivered';
+        case 'cancelled': return 'cancelled';
         default: return status;
     }
 };

@@ -1,18 +1,18 @@
 /* NavigationBar Component */
 .nav-bar {
     height: 60px;
-    background: var(--bg-primary);
+    background: var(--glass-bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     border-bottom: 1px solid var(--border-color);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--glass-shadow);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    transition: all var(--transition-normal);
 }
 
 .nav-left {
@@ -32,15 +32,36 @@
 }
 
 .nav-language-selector .language-selector__button {
-    background: transparent;
+    background: var(--bg-gradient-secondary);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
+    backdrop-filter: blur(10px);
 }
 
 .nav-language-selector .language-selector__button:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-gradient-primary);
     border-color: var(--primary-color);
     color: var(--text-primary);
+    box-shadow: var(--shadow-primary);
+}
+
+/* Theme Toggle in Navigation */
+.nav-theme-toggle {
+    margin-right: 8px;
+}
+
+.nav-theme-toggle .theme-toggle {
+    background: var(--bg-gradient-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    backdrop-filter: blur(10px);
+}
+
+.nav-theme-toggle .theme-toggle:hover {
+    background: var(--bg-gradient-primary);
+    border-color: var(--primary-color);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-primary);
 }
 
 /* Logo Styles */
@@ -50,31 +71,54 @@
     cursor: pointer;
     padding: 8px;
     border-radius: var(--radius-sm);
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-logo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: -1;
+}
+
+.nav-logo:hover::before {
+    opacity: 0.1;
 }
 
 .nav-logo:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-gradient-secondary);
     transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .logo-text {
     font-size: 20px;
     font-weight: 700;
-    color: var(--primary-color);
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: -0.5px;
 }
 
 /* Navigation Buttons */
 .nav-button {
-    background: none;
-    border: none;
+    background: var(--bg-gradient-secondary);
+    border: 1px solid var(--border-color);
     cursor: pointer;
     padding: 8px;
     color: var(--text-secondary);
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
@@ -82,12 +126,33 @@
     min-width: 40px;
     height: 40px;
     position: relative;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.nav-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--primary-gradient);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: -1;
+}
+
+.nav-button:hover::before {
+    opacity: 0.1;
 }
 
 .nav-button:hover {
     color: var(--text-primary);
-    background: var(--bg-secondary);
-    transform: translateY(-1px);
+    background: var(--bg-gradient-primary);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
 }
 
 .nav-button:active {
@@ -97,29 +162,33 @@
 /* Cart Button */
 .nav-button--cart {
     color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
 .nav-button--cart:hover {
-    background: rgba(249, 115, 22, 0.1);
-    color: var(--primary-dark);
+    background: var(--primary-gradient);
+    color: var(--text-inverse);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-primary);
 }
 
 .cart-badge {
     position: absolute;
     top: 4px;
     right: 4px;
-    background: var(--danger-color);
-    color: white;
+    background: var(--danger-gradient);
+    color: var(--text-inverse);
     font-size: 10px;
     font-weight: 600;
     min-width: 16px;
     height: 16px;
-    border-radius: 8px;
+    border-radius: var(--radius-full);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0 4px;
     animation: badgePulse 0.3s ease-in-out;
+    box-shadow: var(--shadow-sm);
 }
 
 @keyframes badgePulse {
@@ -142,8 +211,9 @@
 }
 
 .nav-button--user:hover {
-    background: var(--bg-secondary);
+    background: var(--bg-gradient-primary);
     color: var(--text-primary);
+    border-color: var(--primary-color);
 }
 
 /* Responsive Design */
@@ -178,17 +248,17 @@
 }
 
 /* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .nav-bar {
-        background: var(--bg-primary);
-        border-bottom-color: var(--border-color);
-    }
+.dark .nav-bar {
+    background: var(--glass-bg);
+    border-bottom-color: var(--border-color);
+}
 
-    .nav-button:hover {
-        background: var(--bg-secondary);
-    }
+.dark .nav-button:hover {
+    background: var(--bg-gradient-primary);
+    border-color: var(--primary-color);
+}
 
-    .nav-button--cart:hover {
-        background: rgba(249, 115, 22, 0.2);
-    }
+.dark .nav-button--cart:hover {
+    background: var(--primary-gradient);
+    color: var(--text-inverse);
 }
