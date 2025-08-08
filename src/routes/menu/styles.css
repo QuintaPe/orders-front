@@ -1,21 +1,17 @@
-/* Menu Page Styles */
-
-.menu-page {
-    background: var(--bg-secondary);
-    min-height: 100vh;
-}
-
 .menu-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
 }
 
-/* Cleaner spacing */
-.menu-content>* {
-    margin-bottom: 1.5rem;
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
 }
 
-.menu-content>*:last-child {
-    margin-bottom: 0;
+.product-grid--list {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
 }

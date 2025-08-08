@@ -26,11 +26,6 @@
     gap: 12px;
 }
 
-/* Language Selector in Navigation */
-.nav-language-selector {
-    margin-right: 8px;
-}
-
 .nav-language-selector .language-selector__button {
     background: var(--bg-gradient-secondary);
     border: 1px solid var(--border-color);
@@ -43,11 +38,6 @@
     border-color: var(--primary-color);
     color: var(--text-primary);
     box-shadow: var(--shadow-primary);
-}
-
-/* Theme Toggle in Navigation */
-.nav-theme-toggle {
-    margin-right: 8px;
 }
 
 .nav-theme-toggle .theme-toggle {
@@ -102,8 +92,8 @@
 }
 
 .logo-text {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,11 +162,6 @@
     box-shadow: var(--shadow-primary);
 }
 
-/* User Dropdown Integration */
-.nav-right .user-dropdown {
-    margin-left: 0.5rem;
-}
-
 .nav-right .user-dropdown .user-dropdown-trigger {
     min-width: 40px;
     height: 40px;
@@ -198,8 +183,8 @@
     right: 4px;
     background: var(--danger-gradient);
     color: var(--text-inverse);
-    font-size: 10px;
-    font-weight: 600;
+    font-size: var(--font-size-2xs);
+    font-weight: var(--font-weight-semibold);
     min-width: 16px;
     height: 16px;
     border-radius: var(--radius-full);
@@ -244,7 +229,7 @@
     }
 
     .logo-text {
-        font-size: 22px;
+        font-size: var(--font-size-xl-2);
     }
 
     .nav-button {
@@ -263,7 +248,7 @@
     }
 
     .logo-text {
-        font-size: 24px;
+        font-size: var(--font-size-2xl);
     }
 }
 

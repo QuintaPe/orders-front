@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useI18n } from '../../context/I18nContext.jsx';
 import Layout from '../../layouts/index.jsx';
-import ProductGrid from '../../components/ProductGrid/index.jsx';
+import ProductGrid from '../../components/ProductCard/index.jsx';
 import AdvancedFilters from '../../components/AdvancedFilters/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
 import FloatingCartButton from '../../components/FloatingCartButton/index.jsx';
 import { useCart } from '../../context/CartContext.jsx';
-import { useDeviceType } from '../../hooks/useDeviceType.js';
 import { ProductsRepository, CategoriesRepository } from '../../modules/index.js';
 import './styles.css';
+import ProductCard from '../../components/ProductCard/index.jsx';
 
 function MenuPage() {
     const navigate = useNavigate();
     const { getCartCount } = useCart();
-    const { isMobile } = useDeviceType();
     const { t } = useI18n();
 
     const [categories, setCategories] = useState([]);
@@ -149,12 +148,21 @@ function MenuPage() {
                         selectedCategory={selectedCategory}
                         categories={categoryOptions}
                     />
-
-                    <ProductGrid
-                        products={filteredProducts}
-                        title={selectedCategory !== 'all' ? selectedCategory : t('allProducts')}
-                        viewMode={viewMode}
-                    />
+                    <div className="product-grid-container">
+                        {filteredProducts.length > 0 ? (
+                            <div className={`product-grid product-grid--${viewMode}`}>
+                                {filteredProducts.map(product => (
+                                    <ProductCard key={product.id} product={product} viewMode={viewMode} />
+                                ))}
+                            </div>
+                        ) : (
+                            <EmptyState
+                                icon="🍕"
+                                title="No se encontraron productos"
+                                description="Intenta seleccionar una categoría diferente o cambiar el término de búsqueda."
+                            />
+                        )}
+                    </div>
                 </div>
 
                 {/* Floating cart button */}

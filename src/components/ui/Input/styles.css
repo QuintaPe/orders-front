@@ -11,12 +11,12 @@
     border: 2px solid var(--border-light);
     border-radius: var(--radius-lg);
     padding: 1rem 1.25rem;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     transition: all var(--transition-normal);
     background: var(--bg-gradient-secondary);
     font-family: inherit;
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
@@ -58,19 +58,19 @@
 
 .input--small {
     padding: 0.75rem 1rem;
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     border-radius: var(--radius-md);
 }
 
 .input--medium {
     padding: 1rem 1.25rem;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     border-radius: var(--radius-lg);
 }
 
 .input--large {
     padding: 1.25rem 1.5rem;
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     border-radius: var(--radius-xl);
 }
 
@@ -120,7 +120,7 @@
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     transition: all var(--transition-normal);
     z-index: 1;
 }
@@ -194,14 +194,14 @@
     color: var(--text-light);
     transition: all var(--transition-normal);
     pointer-events: none;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
 }
 
 .input--floating:focus+.input-label,
 .input--floating:not(:placeholder-shown)+.input-label {
     top: 0.5rem;
     left: 1.25rem;
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }

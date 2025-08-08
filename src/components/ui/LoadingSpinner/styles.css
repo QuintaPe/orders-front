@@ -11,6 +11,6 @@
 
 .loading-spinner__text {
     color: var(--text-secondary);
-    font-size: 16px;
+    font-size: var(--font-size-base);
     margin: 0;
 }

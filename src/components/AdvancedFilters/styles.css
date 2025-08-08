@@ -121,7 +121,7 @@
     color: var(--text-primary);
     border-radius: var(--radius-md);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
     transition: all var(--transition-fast);
     backdrop-filter: blur(10px);
@@ -168,7 +168,7 @@
 .category-dropdown-header h4 {
     margin: 0;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
 }
 
@@ -242,8 +242,8 @@
 }
 
 .filter-title {
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
     margin: 0 0 0.75rem 0;
 }
@@ -261,9 +261,9 @@
 }
 
 .price-input label {
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .price-input input {

@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background: var(--bg-secondary);
 }
 
 .not-found-content {
@@ -20,22 +19,22 @@
 }
 
 .not-found-icon {
-    font-size: 6rem;
-    font-weight: 900;
+    font-size: var(--font-size-6xl);
+    font-weight: var(--font-weight-black);
     color: var(--primary-color);
     margin-bottom: 1rem;
     line-height: 1;
 }
 
 .not-found-title {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
     color: var(--text-primary);
     margin: 0 0 1rem 0;
 }
 
 .not-found-description {
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     color: var(--text-secondary);
     line-height: 1.6;
     margin: 0 0 2rem 0;
@@ -53,7 +52,7 @@
     padding: 0.75rem 1.5rem;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
     transition: all var(--transition-fast);
 }
@@ -71,7 +70,7 @@
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: var(--radius-md);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
     transition: all var(--transition-fast);
 }
@@ -89,15 +88,15 @@
     }
 
     .not-found-icon {
-        font-size: 4rem;
+        font-size: var(--font-size-4xl);
     }
 
     .not-found-title {
-        font-size: 1.5rem;
+        font-size: var(--font-size-2xl);
     }
 
     .not-found-description {
-        font-size: 1rem;
+        font-size: var(--font-size-base);
     }
 
     .not-found-actions {

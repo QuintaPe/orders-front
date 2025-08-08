@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Card, Tag, EmptyState, Button } from '../ui';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext.jsx';
 import { useI18n } from '../../context/I18nContext.jsx';
 import { Plus, Minus, ShoppingCart } from 'lucide-react';
 import './styles.css';
 
-function ProductCard({ product, viewMode = 'grid' }) {
+export default function ProductCard({ product, viewMode = 'grid' }) {
     const navigate = useNavigate();
     const { addToCart, getCartItemQuantity } = useCart();
     const { t } = useI18n();
@@ -129,25 +128,3 @@ function ProductCard({ product, viewMode = 'grid' }) {
         </div>
     );
 }
-
-function ProductGrid({ products, title = "All Products", viewMode = 'grid' }) {
-    return (
-        <div className="product-grid-container">
-            {products.length > 0 ? (
-                <div className={`product-grid product-grid--${viewMode}`}>
-                    {products.map(product => (
-                        <ProductCard key={product.id} product={product} viewMode={viewMode} />
-                    ))}
-                </div>
-            ) : (
-                <EmptyState
-                    icon="🍕"
-                    title="No se encontraron productos"
-                    description="Intenta seleccionar una categoría diferente o cambiar el término de búsqueda."
-                />
-            )}
-        </div>
-    );
-}
-
-export default ProductGrid; 

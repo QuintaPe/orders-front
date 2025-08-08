@@ -12,7 +12,7 @@
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-primary);
     transition: all var(--transition-fast);
     min-width: 120px;
@@ -29,7 +29,7 @@
 }
 
 .language-selector__flag {
-    font-size: 16px;
+    font-size: var(--font-size-base);
     line-height: 1;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .language-selector__arrow {
-    font-size: 10px;
+    font-size: var(--font-size-2xs);
     transition: transform var(--transition-fast);
     color: var(--text-secondary);
 }
@@ -75,7 +75,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-primary);
     text-align: left;
     transition: background-color var(--transition-fast);
@@ -88,7 +88,7 @@
 .language-selector__option.active {
     background: var(--primary-light);
     color: var(--primary-color);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .language-selector__option:first-child {
@@ -102,22 +102,22 @@
 /* Size variants */
 .language-selector.small .language-selector__button {
     padding: 6px 8px;
-    font-size: 12px;
+    font-size: var(--font-size-xs);
     min-width: 100px;
 }
 
 .language-selector.small .language-selector__flag {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
 }
 
 .language-selector.large .language-selector__button {
     padding: 12px 16px;
-    font-size: 16px;
+    font-size: var(--font-size-base);
     min-width: 140px;
 }
 
 .language-selector.large .language-selector__flag {
-    font-size: 18px;
+    font-size: var(--font-size-lg);
 }
 
 /* Mobile responsive */

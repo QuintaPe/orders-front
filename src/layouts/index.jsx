@@ -5,7 +5,9 @@ function Layout({ children, title, showBack = false, showHeart = false, location
     return (
         <>
             <NavigationBar />
-            {children}
+            <main>
+                {children}
+            </main>
         </>
     );
 }

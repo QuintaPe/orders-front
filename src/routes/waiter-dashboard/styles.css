@@ -2,7 +2,6 @@
 
 .waiter-dashboard {
     min-height: 100vh;
-    background: var(--bg-gradient-primary);
 }
 
 /* Header */
@@ -24,8 +23,8 @@
 }
 
 .dashboard-title {
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -36,7 +35,7 @@
 .dashboard-subtitle {
     color: var(--text-secondary);
     margin: 0.25rem 0 0 0;
-    font-size: 1rem;
+    font-size: var(--font-size-base);
 }
 
 .connection-status {
@@ -48,8 +47,8 @@
     align-items: center;
     gap: 0.5rem;
     color: var(--success-color);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     padding: 0.25rem 0.75rem;
     background: var(--success-gradient);
     color: var(--text-inverse);
@@ -62,8 +61,8 @@
     align-items: center;
     gap: 0.5rem;
     color: var(--danger-color);
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     padding: 0.25rem 0.75rem;
     background: var(--danger-gradient);
     color: var(--text-inverse);
@@ -78,7 +77,7 @@
     border-radius: var(--radius-md);
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     transition: all var(--transition-fast);
     box-shadow: var(--shadow-sm);
 }
@@ -184,8 +183,8 @@
 }
 
 .stat-label {
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     color: var(--text-secondary);
     margin: 0 0 0.25rem 0;
     text-transform: uppercase;
@@ -193,8 +192,8 @@
 }
 
 .stat-value {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -219,8 +218,8 @@
 }
 
 .orders-title {
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -274,8 +273,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
     color: var(--text-inverse);
     box-shadow: var(--shadow-sm);
 }
@@ -286,8 +285,8 @@
 }
 
 .table-title {
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
     margin: 0 0 0.25rem 0;
     text-transform: uppercase;
@@ -295,14 +294,14 @@
 }
 
 .order-summary {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
     margin: 0 0 0.25rem 0;
 }
 
 .order-total {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -319,8 +318,8 @@
     align-items: center;
     padding: 0.375rem 0.875rem;
     border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     box-shadow: var(--shadow-sm);
@@ -369,7 +368,7 @@
 }
 
 .products-content {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
 }
 
@@ -388,12 +387,12 @@
 
 .product-quantity {
     flex: 1;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     color: var(--text-primary);
 }
 
 .product-price {
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     color: var(--primary-color);
 }
 
@@ -411,7 +410,7 @@
     border-radius: var(--radius-md);
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     transition: all var(--transition-fast);
     box-shadow: var(--shadow-sm);
     text-transform: uppercase;
@@ -440,7 +439,7 @@
     }
 
     .dashboard-title {
-        font-size: 1.5rem;
+        font-size: var(--font-size-2xl);
     }
 
     .stats-grid {
@@ -453,7 +452,7 @@
     }
 
     .stat-value {
-        font-size: 1.5rem;
+        font-size: var(--font-size-2xl);
     }
 
     .order-header {
@@ -474,7 +473,7 @@
     .table-number {
         width: 2.5rem;
         height: 2.5rem;
-        font-size: 0.875rem;
+        font-size: var(--font-size-sm);
     }
 }
 
@@ -497,7 +496,7 @@
 
     .action-button {
         padding: 0.5rem 1rem;
-        font-size: 0.75rem;
+        font-size: var(--font-size-xs);
     }
 }
 

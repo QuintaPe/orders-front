@@ -22,16 +22,16 @@
 }
 
 .cart-summary-title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
     color: var(--text-primary);
     margin: 0;
 }
 
 .cart-summary-count {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     background: var(--bg-gradient-secondary);
     padding: 0.5rem 1rem;
     border-radius: var(--radius-full);
@@ -49,15 +49,15 @@
 }
 
 .summary-label {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .summary-value {
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     color: var(--text-primary);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
 }
 
 .summary-divider {
@@ -71,14 +71,14 @@
 }
 
 .summary-row--total .summary-label {
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
     color: var(--text-primary);
 }
 
 .summary-row--total .summary-value {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
     color: var(--primary-color);
 }
 
@@ -134,7 +134,7 @@
     }
 
     .cart-summary-title {
-        font-size: 1.25rem;
+        font-size: var(--font-size-xl);
     }
 
     .cart-summary-actions {
@@ -154,6 +154,6 @@
     }
 
     .cart-summary-title {
-        font-size: 1.75rem;
+        font-size: var(--font-size-3xl);
     }
 }

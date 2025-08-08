@@ -17,8 +17,8 @@
     transition: all var(--transition-fast);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
 }
 
 .user-dropdown-trigger:hover {
@@ -103,8 +103,8 @@
 
 .user-full-name {
     display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
     margin-bottom: 0.25rem;
     white-space: nowrap;
@@ -114,11 +114,11 @@
 
 .user-role {
     display: block;
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
 }
 
 .user-dropdown-options {
@@ -136,8 +136,8 @@
     color: var(--text-primary);
     cursor: pointer;
     transition: all var(--transition-fast);
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     text-align: left;
 }
 
@@ -178,7 +178,7 @@
 
     .user-dropdown-option {
         padding: 0.625rem 0.875rem;
-        font-size: 0.8125rem;
+        font-size: 13px;
     }
 
     .user-dropdown-header {
@@ -191,11 +191,11 @@
     }
 
     .user-full-name {
-        font-size: 0.8125rem;
+        font-size: 13px;
     }
 
     .user-role {
-        font-size: 0.6875rem;
+        font-size: 11px;
     }
 }
 
@@ -207,7 +207,7 @@
 
     .user-dropdown-option {
         padding: 0.5rem 0.75rem;
-        font-size: 0.75rem;
+        font-size: var(--font-size-xs);
         gap: 0.5rem;
     }
 

@@ -48,7 +48,6 @@ function CartPage() {
 
             await OrdersRepository.createOrder(orderData);
             toast.showSuccess(t('orderCreatedSuccess'));
-            onComplete();
         } catch (error) {
             console.error('Error creating order:', error);
             const errorMessage = error.message || t('orderCreatedError');
