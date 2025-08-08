@@ -1,31 +1,47 @@
 import React from 'react';
-import Button from '../ui/Button/index.jsx';
+import { useI18n } from '../../context/I18nContext.jsx';
 import './styles.css';
 
 function CategoryFilter({ categories, selectedCategory, onSelectCategory }) {
+    const { t } = useI18n();
+
     const handleCategorySelect = (category) => {
         onSelectCategory(category);
     };
 
+    const getCategoryIcon = (categoryName) => {
+        const icons = {
+            'Bebidas': '🥤',
+            'Postres': '🍰',
+            'Entradas': '🥗',
+            'Platos Principales': '🍽️',
+            'Aperitivos': '🍟',
+            'default': '🍕'
+        };
+        return icons[categoryName] || icons.default;
+    };
+
     return (
-        <div className="category-buttons">
-            <Button
-                variant={!selectedCategory ? 'primary' : 'outline'}
-                size="small"
-                onClick={() => handleCategorySelect(null)}
-            >
-                All
-            </Button>
-            {categories.map(cat => (
-                <Button
-                    key={cat.id}
-                    variant={selectedCategory?.id === cat.id ? 'primary' : 'outline'}
-                    size="small"
-                    onClick={() => handleCategorySelect(cat)}
+        <div className="category-filter">
+            <div className="category-filter-container">
+                <button
+                    className={`category-chip ${!selectedCategory ? 'category-chip--active' : ''}`}
+                    onClick={() => handleCategorySelect(null)}
                 >
-                    {cat.name}
-                </Button>
-            ))}
+                    <span className="category-icon">🍽️</span>
+                    <span className="category-name">{t('allCategories')}</span>
+                </button>
+                {categories.map(cat => (
+                    <button
+                        key={cat.id}
+                        className={`category-chip ${selectedCategory?.id === cat.id ? 'category-chip--active' : ''}`}
+                        onClick={() => handleCategorySelect(cat)}
+                    >
+                        <span className="category-icon">{getCategoryIcon(cat.name)}</span>
+                        <span className="category-name">{cat.name}</span>
+                    </button>
+                ))}
+            </div>
         </div>
     );
 }

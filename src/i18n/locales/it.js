@@ -25,7 +25,6 @@ export default {
     reload: 'Ricarica',
 
     // Navigation
-    home: 'Home',
     menu: 'Menu',
     cart: 'Carrello',
     login: 'Accedi',
@@ -39,9 +38,7 @@ export default {
     users: 'Utenti',
     analytics: 'Analisi',
 
-    // Hero Section
-    heroTitle: 'Cibo Delizioso',
-    heroSubtitle: 'Ingredienti freschi, gusto straordinario',
+
 
     // Search
     searchPlaceholder: 'Trova il tuo cibo qui...',
@@ -80,6 +77,28 @@ export default {
     clearCart: 'Svuota Carrello',
     updateCart: 'Aggiorna Carrello',
     cartCount: '{{count}} articoli nel carrello',
+    addToCart: 'Aggiungi al Carrello',
+    quantity: 'Quantità',
+    each: 'ciascuno',
+    orderSummary: 'Riepilogo Ordine',
+    item: 'articolo',
+    items: 'articoli',
+    filters: 'Filtri',
+    priceRange: 'Fascia di Prezzo',
+    minPrice: 'Prezzo Minimo',
+    maxPrice: 'Prezzo Massimo',
+    sortBy: 'Ordina per',
+    sortByName: 'Ordina per Nome',
+    sortByPriceAsc: 'Prezzo: Crescente',
+    sortByPriceDesc: 'Prezzo: Decrescente',
+    sortByPopular: 'Più Popolari',
+    gridView: 'Vista Griglia',
+    listView: 'Vista Lista',
+    toggleFilters: 'Mostra/Nascondi Filtri',
+    totalProducts: 'Prodotti Totali',
+    averagePrice: 'Prezzo Medio',
+    categories: 'Categorie',
+    featured: 'In Evidenza',
 
     // Orders
     order: 'Ordine',
@@ -298,12 +317,12 @@ export default {
     pageNotFound: 'Pagina non trovata',
     pageNotFoundDescription: 'La pagina che stai cercando non esiste o è stata spostata.',
     goBack: 'Torna Indietro',
-    goHome: 'Vai alla Home',
 
     // Menu Page
     menu: 'Menu',
     allCategories: 'Tutte le Categorie',
     filterByCategory: 'Filtra per categoria',
+    discoverOurMenu: 'Scopri il nostro menu',
 
     // Order Status
     orderStatus: 'Stato Ordine',

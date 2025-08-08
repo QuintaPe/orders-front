@@ -1,49 +1,49 @@
-/* Home Page Styles */
-
-.cart-button-container {
+/* FloatingCartButton Component */
+.floating-cart-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.cart-button {
+    bottom: 2rem;
+    right: 2rem;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     background: var(--primary-color);
-    color: var(--bg-primary);
+    color: white;
     border: none;
-    font-size: 24px;
     cursor: pointer;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     transition: all 0.3s ease;
+    z-index: 1000;
+    position: relative;
 }
 
-.cart-button:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-xl);
+.floating-cart-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(249, 115, 22, 0.4);
     background: var(--primary-dark);
 }
 
-.cart-count {
+.floating-cart-button:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.cart-badge {
     position: absolute;
     top: -8px;
     right: -8px;
     background: var(--danger-color);
-    color: var(--bg-primary);
+    color: white;
     border-radius: 50%;
     width: 24px;
     height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 2px solid white;
     animation: pulse 2s infinite;
 }
 
@@ -58,5 +58,15 @@
 
     100% {
         transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .floating-cart-button {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 56px;
+        height: 56px;
     }
 }

@@ -1,80 +1,142 @@
-import React from 'react';
-import { Card, Tag, EmptyState } from '../ui';
+import React, { useState } from 'react';
+import { Card, Tag, EmptyState, Button } from '../ui';
 import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext.jsx';
+import { useI18n } from '../../context/I18nContext.jsx';
+import { Plus, Minus, ShoppingCart } from 'lucide-react';
 import './styles.css';
 
-function ProductCard({ product }) {
+function ProductCard({ product, viewMode = 'grid' }) {
     const navigate = useNavigate();
+    const { addToCart, getCartItemQuantity } = useCart();
+    const { t } = useI18n();
+    const [quantity, setQuantity] = useState(1);
+    const [isAddingToCart, setIsAddingToCart] = useState(false);
 
-    const handleClick = () => {
+    const handleCardClick = (e) => {
+        // Evitar navegación si se hace clic en los controles del carrito
+        if (e.target.closest('.product-cart-controls')) {
+            return;
+        }
         navigate(`/product/${product.id}`);
     };
 
+    const handleAddToCart = async (e) => {
+        e.stopPropagation();
+        setIsAddingToCart(true);
+
+        // Simular un pequeño delay para feedback visual
+        setTimeout(() => {
+            addToCart(product, quantity);
+            setQuantity(1); // Reset quantity after adding
+            setIsAddingToCart(false);
+        }, 150);
+    };
+
+    const handleQuantityChange = (e, newQuantity) => {
+        e.stopPropagation();
+        if (newQuantity >= 1 && newQuantity <= 99) {
+            setQuantity(newQuantity);
+        }
+    };
+
     const formatPrice = (price) => {
-        return typeof price === 'number' ? `$${price}` : '$0';
+        return typeof price === 'number' ? `$${price.toFixed(2)}` : '$0.00';
     };
 
     const getProductIcon = (category) => {
-        if (category === 'Bebidas') return '🥤';
-        if (category === 'Postres') return '🍰';
-        if (category === 'Entradas') return '🥗';
-        return '🍕';
+        const icons = {
+            'Bebidas': '🥤',
+            'Postres': '🍰',
+            'Entradas': '🥗',
+            'Platos Principales': '🍽️',
+            'Aperitivos': '🍟',
+            'default': '🍕'
+        };
+        return icons[category] || icons.default;
     };
 
-    const getProductGradient = (category) => {
-        if (category === 'Bebidas') return 'linear-gradient(135deg, #4facfe, #00f2fe)';
-        if (category === 'Postres') return 'linear-gradient(135deg, #fa709a, #fee140)';
-        if (category === 'Entradas') return 'linear-gradient(135deg, #a8edea, #fed6e3)';
-        return 'linear-gradient(135deg, #ff6b6b, #ff8e8e)';
+    const getProductColor = (category) => {
+        const colors = {
+            'Bebidas': '#4facfe',
+            'Postres': '#fa709a',
+            'Entradas': '#a8edea',
+            'Platos Principales': '#ff6b6b',
+            'Aperitivos': '#ffd93d',
+            'default': '#ff6b6b'
+        };
+        return colors[category] || colors.default;
     };
+
+    const cartQuantity = getCartItemQuantity(product.id);
 
     return (
-        <Card
-            className="product-card"
-            onClick={handleClick}
-            hoverable
-            padding="none"
-        >
-            <div className="product-image">
-                <div style={{
-                    width: '100%',
-                    height: '100%',
-                    background: getProductGradient(product.category),
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: '24px'
-                }}>
-                    {getProductIcon(product.category)}
+        <div className={`product-card product-card--${viewMode}`} onClick={handleCardClick}>
+            <div className="product-card-content">
+                <div className="product-image">
+                    <div
+                        className="product-icon"
+                        style={{ backgroundColor: getProductColor(product.category) }}
+                    >
+                        {getProductIcon(product.category)}
+                    </div>
+                </div>
+                <div className="product-info">
+                    <div className="product-header">
+                        <h3 className="product-name">{product.name}</h3>
+                        {viewMode === 'list' && (
+                            <div className="product-category">
+                                {product.category}
+                            </div>
+                        )}
+                    </div>
+                    <div className="product-footer">
+                        <span className="product-price">{formatPrice(product.price)}</span>
+                        <div className="product-cart-controls">
+                            {cartQuantity > 0 && (
+                                <div className="quantity-display">
+                                    <span className="quantity-text">{cartQuantity}</span>
+                                </div>
+                            )}
+                            <div className="quantity-selector">
+                                <button
+                                    className="quantity-btn quantity-btn--minus"
+                                    onClick={(e) => handleQuantityChange(e, quantity - 1)}
+                                    disabled={quantity <= 1}
+                                >
+                                    <Minus size={16} />
+                                </button>
+                                <span className="quantity-value">{quantity}</span>
+                                <button
+                                    className="quantity-btn quantity-btn--plus"
+                                    onClick={(e) => handleQuantityChange(e, quantity + 1)}
+                                    disabled={quantity >= 99}
+                                >
+                                    <Plus size={16} />
+                                </button>
+                            </div>
+                            <button
+                                className={`add-to-cart-btn ${isAddingToCart ? 'add-to-cart-btn--loading' : ''}`}
+                                onClick={handleAddToCart}
+                                disabled={isAddingToCart}
+                            >
+                                <ShoppingCart size={18} />
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="product-info">
-                <div className="product-name">{product.name}</div>
-                <div className="product-price">{formatPrice(product.price)}</div>
-                <div className="product-rating">
-                    <span className="star-icon">⭐</span>
-                </div>
-                {product.category && (
-                    <Tag variant="info" size="small">
-                        {product.category}
-                    </Tag>
-                )}
-            </div>
-        </Card>
+        </div>
     );
 }
 
-function ProductGrid({ products, title = "All Products" }) {
+function ProductGrid({ products, title = "All Products", viewMode = 'grid' }) {
     return (
-        <div>
-            <div className="section-header">
-                <h2 className="section-title">{title}</h2>
-            </div>
+        <div className="product-grid-container">
             {products.length > 0 ? (
-                <div className="product-grid">
+                <div className={`product-grid product-grid--${viewMode}`}>
                     {products.map(product => (
-                        <ProductCard key={product.id} product={product} />
+                        <ProductCard key={product.id} product={product} viewMode={viewMode} />
                     ))}
                 </div>
             ) : (

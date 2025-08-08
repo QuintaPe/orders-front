@@ -37,7 +37,7 @@ function NavigationBar() {
                 <button
                     className="nav-logo"
                     onClick={handleLogoClick}
-                    aria-label="Ir al inicio"
+                    aria-label="Ir al menú"
                 >
                     <span className="logo-text">🍺 BarApp</span>
                 </button>

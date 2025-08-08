@@ -10,6 +10,8 @@ const Button = ({
     className = '',
     type = 'button',
     fullWidth = false,
+    icon,
+    loading = false,
     ...props
 }) => {
     const baseClasses = 'button';
@@ -32,6 +34,8 @@ const Button = ({
         sizeClasses[size],
         fullWidth && 'button--full-width',
         disabled && 'button--disabled',
+        loading && 'button--loading',
+        icon && 'button--with-icon',
         className
     ].filter(Boolean).join(' ');
 
@@ -40,10 +44,17 @@ const Button = ({
             type={type}
             className={classes}
             onClick={onClick}
-            disabled={disabled}
+            disabled={disabled || loading}
             {...props}
         >
-            {children}
+            {loading ? (
+                <div className="button-loading-spinner"></div>
+            ) : (
+                <>
+                    {icon && <span className="button-icon">{icon}</span>}
+                    {children}
+                </>
+            )}
         </button>
     );
 };

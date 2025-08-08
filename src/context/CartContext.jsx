@@ -80,6 +80,11 @@ export const CartProvider = ({ children }) => {
         return cartItems.reduce((sum, item) => sum + item.quantity, 0);
     };
 
+    const getCartItemQuantity = (productId) => {
+        const item = cartItems.find(item => item.id === productId);
+        return item ? item.quantity : 0;
+    };
+
     const value = {
         cartItems,
         addToCart,
@@ -87,7 +92,8 @@ export const CartProvider = ({ children }) => {
         updateQuantity,
         clearCart,
         getCartTotal,
-        getCartCount
+        getCartCount,
+        getCartItemQuantity
     };
 
     return (

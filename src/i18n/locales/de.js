@@ -25,7 +25,6 @@ export default {
     reload: 'Neu laden',
 
     // Navigation
-    home: 'Startseite',
     menu: 'Menü',
     cart: 'Warenkorb',
     login: 'Anmelden',
@@ -39,9 +38,7 @@ export default {
     users: 'Benutzer',
     analytics: 'Analysen',
 
-    // Hero Section
-    heroTitle: 'Leckeres Essen',
-    heroSubtitle: 'Frische Zutaten, erstaunlicher Geschmack',
+
 
     // Search
     searchPlaceholder: 'Finde dein Essen hier...',
@@ -80,6 +77,28 @@ export default {
     clearCart: 'Warenkorb leeren',
     updateCart: 'Warenkorb aktualisieren',
     cartCount: '{{count}} Artikel im Warenkorb',
+    addToCart: 'Zum Warenkorb hinzufügen',
+    quantity: 'Menge',
+    each: 'jeweils',
+    orderSummary: 'Bestellübersicht',
+    item: 'Artikel',
+    items: 'Artikel',
+    filters: 'Filter',
+    priceRange: 'Preisbereich',
+    minPrice: 'Mindestpreis',
+    maxPrice: 'Höchstpreis',
+    sortBy: 'Sortieren nach',
+    sortByName: 'Nach Name sortieren',
+    sortByPriceAsc: 'Preis: Niedrig zu Hoch',
+    sortByPriceDesc: 'Preis: Hoch zu Niedrig',
+    sortByPopular: 'Beliebteste',
+    gridView: 'Rasteransicht',
+    listView: 'Listenansicht',
+    toggleFilters: 'Filter umschalten',
+    totalProducts: 'Gesamtprodukte',
+    averagePrice: 'Durchschnittspreis',
+    categories: 'Kategorien',
+    featured: 'Empfohlen',
 
     // Orders
     order: 'Bestellung',
@@ -298,12 +317,12 @@ export default {
     pageNotFound: 'Seite nicht gefunden',
     pageNotFoundDescription: 'Die gesuchte Seite existiert nicht oder wurde verschoben.',
     goBack: 'Zurück',
-    goHome: 'Zur Startseite',
 
     // Menu Page
     menu: 'Menü',
     allCategories: 'Alle Kategorien',
     filterByCategory: 'Nach Kategorie filtern',
+    discoverOurMenu: 'Entdecken Sie unser Menü',
 
     // Order Status
     orderStatus: 'Bestellstatus',

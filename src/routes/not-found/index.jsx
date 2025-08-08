@@ -9,10 +9,6 @@ function NotFoundPage() {
     const navigate = useNavigate();
     const { t } = useI18n();
 
-    const handleGoHome = () => {
-        navigate('/');
-    };
-
     const handleGoBack = () => {
         navigate(-1);
     };
@@ -34,14 +30,6 @@ function NotFoundPage() {
                             className="back-button"
                         >
                             {t('goBack')}
-                        </Button>
-                        <Button
-                            onClick={handleGoHome}
-                            variant="primary"
-                            size="medium"
-                            className="home-button"
-                        >
-                            {t('goHome')}
                         </Button>
                     </div>
                 </div>

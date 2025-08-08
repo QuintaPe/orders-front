@@ -1,5 +1,4 @@
 // Route Components
-export { default as HomePage } from './home/index.jsx';
 export { default as ProductDetailPage } from './product/index.jsx';
 export { default as CartPage } from './cart/index.jsx';
 export { default as MenuPage } from './menu/index.jsx';
@@ -12,11 +11,6 @@ export { default as AdminDashboardPage } from './admin-dashboard/index.jsx';
 export const routes = [
     {
         path: '/',
-        element: 'HomePage',
-        title: 'Home'
-    },
-    {
-        path: '/menu',
         element: 'MenuPage',
         title: 'Menu'
     },

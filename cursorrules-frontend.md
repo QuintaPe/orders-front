@@ -41,9 +41,7 @@ This is a React-based frontend for a bar QR code ordering system with real-time 
 - **Feature Components**
   - `NavigationBar/` - Main navigation
   - `DashboardNav/` - Dashboard navigation
-  - `HeroSection/` - Landing page hero
   - `ProductGrid/` - Product display grid
-  - `PopularSection/` - Popular products section
   - `CategoryFilter/` - Category filtering
   - `OrderForm/` - Order creation form
   - `WebSocketStatus/` - Connection status indicator
@@ -51,8 +49,7 @@ This is a React-based frontend for a bar QR code ordering system with real-time 
   - `ErrorBoundary/` - Error handling
 
 ### Routes (`src/routes/`)
-- `home/` - Landing page with hero and popular sections
-- `menu/` - Product catalog with filtering
+- `/` - Menu page (product catalog with filtering)
 - `product/:id` - Individual product details
 - `cart/` - Shopping cart management
 - `login/` - Authentication page
@@ -186,13 +183,12 @@ export default ComponentName;
 1. **Presentational Components**: Pure UI components (Button, Card, Input)
 2. **Container Components**: Business logic components (ProductGrid, OrderForm)
 3. **Layout Components**: Page structure components (NavigationBar, DashboardNav)
-4. **Route Components**: Page-level components (HomePage, MenuPage)
+4. **Route Components**: Page-level components (MenuPage, ProductDetailPage, etc.)
 
 ## Routing Structure
 
 ### Public Routes
-- `/` - Home page (landing)
-- `/menu` - Product catalog
+- `/` - Menu page (product catalog)
 - `/product/:id` - Product details
 - `/cart` - Shopping cart
 - `/login` - Authentication

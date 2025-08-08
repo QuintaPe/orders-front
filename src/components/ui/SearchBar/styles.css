@@ -1,11 +1,9 @@
 /* SearchBar Component */
 .search-container {
     width: 100%;
-    background: var(--bg-primary);
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    margin: 1rem;
+    background: transparent;
+    padding: 1rem 0;
+    margin: 0;
 }
 
 .search-input {

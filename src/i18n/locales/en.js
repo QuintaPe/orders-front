@@ -25,7 +25,6 @@ export default {
     reload: 'Reload',
 
     // Navigation
-    home: 'Home',
     menu: 'Menu',
     cart: 'Cart',
     login: 'Login',
@@ -39,9 +38,7 @@ export default {
     users: 'Users',
     analytics: 'Analytics',
 
-    // Hero Section
-    heroTitle: 'Delicious Food',
-    heroSubtitle: 'Fresh ingredients, amazing taste',
+
 
     // Search
     searchPlaceholder: 'Find your food here...',
@@ -80,6 +77,28 @@ export default {
     clearCart: 'Clear Cart',
     updateCart: 'Update Cart',
     cartCount: '{{count}} items in cart',
+    addToCart: 'Add to Cart',
+    quantity: 'Quantity',
+    each: 'each',
+    orderSummary: 'Order Summary',
+    item: 'item',
+    items: 'items',
+    filters: 'Filters',
+    priceRange: 'Price Range',
+    minPrice: 'Min Price',
+    maxPrice: 'Max Price',
+    sortBy: 'Sort by',
+    sortByName: 'Sort by Name',
+    sortByPriceAsc: 'Price: Low to High',
+    sortByPriceDesc: 'Price: High to Low',
+    sortByPopular: 'Most Popular',
+    gridView: 'Grid View',
+    listView: 'List View',
+    toggleFilters: 'Toggle Filters',
+    totalProducts: 'Total Products',
+    averagePrice: 'Average Price',
+    categories: 'Categories',
+    featured: 'Featured',
 
     // Orders
     order: 'Order',
@@ -298,12 +317,12 @@ export default {
     pageNotFound: 'Page not found',
     pageNotFoundDescription: 'The page you are looking for does not exist or has been moved.',
     goBack: 'Go Back',
-    goHome: 'Go Home',
 
     // Menu Page
     menu: 'Menu',
     allCategories: 'All Categories',
     filterByCategory: 'Filter by category',
+    discoverOurMenu: 'Discover our menu',
 
     // Order Status
     orderStatus: 'Order Status',

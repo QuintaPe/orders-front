@@ -2,7 +2,6 @@ import { createRoot } from 'react-dom/client'
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './index.css'
 
-import HomePage from './routes/home/index.jsx'
 import ProductDetailPage from './routes/product/index.jsx'
 import CartPage from './routes/cart/index.jsx'
 import MenuPage from './routes/menu/index.jsx'
@@ -25,10 +24,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />
-      },
-      {
-        path: "menu",
         element: <MenuPage />
       },
       {

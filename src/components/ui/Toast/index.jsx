@@ -14,14 +14,32 @@ export const useToast = () => {
 
 const Toast = ({ message, type = 'info', duration = 5000, onClose }) => {
     const [isVisible, setIsVisible] = useState(true);
+    const [progress, setProgress] = useState(100);
 
     useEffect(() => {
+        const startTime = Date.now();
+
+        const interval = setInterval(() => {
+            const now = Date.now();
+            const elapsed = now - startTime;
+            const remaining = Math.max(0, duration - elapsed);
+            const newProgress = (remaining / duration) * 100;
+            setProgress(newProgress);
+
+            if (remaining <= 0) {
+                clearInterval(interval);
+            }
+        }, 50); // Update every 50ms for smooth animation
+
         const timer = setTimeout(() => {
             setIsVisible(false);
             setTimeout(onClose, 300); // Wait for animation to complete
         }, duration);
 
-        return () => clearTimeout(timer);
+        return () => {
+            clearTimeout(timer);
+            clearInterval(interval);
+        };
     }, [duration, onClose]);
 
     const getIcon = () => {
@@ -46,6 +64,12 @@ const Toast = ({ message, type = 'info', duration = 5000, onClose }) => {
             }}>
                 ×
             </button>
+            <div className="toast-progress-bar">
+                <div
+                    className="toast-progress-fill"
+                    style={{ width: `${progress}%` }}
+                ></div>
+            </div>
         </div>
     );
 };
@@ -53,7 +77,7 @@ const Toast = ({ message, type = 'info', duration = 5000, onClose }) => {
 export const ToastProvider = ({ children }) => {
     const [toasts, setToasts] = useState([]);
 
-    const addToast = (message, type = 'info', duration = 5000) => {
+    const addToast = (message, type = 'info', duration = 2000) => {
         const id = Date.now() + Math.random();
         const newToast = { id, message, type, duration };
         setToasts(prev => [...prev, newToast]);

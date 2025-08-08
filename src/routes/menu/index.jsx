@@ -5,8 +5,9 @@ import Layout from '../../layouts/index.jsx';
 import SearchBar from '../../components/ui/SearchBar/index.jsx';
 import CategoryFilter from '../../components/CategoryFilter/index.jsx';
 import ProductGrid from '../../components/ProductGrid/index.jsx';
+import AdvancedFilters from '../../components/AdvancedFilters/index.jsx';
 import LoadingSpinner from '../../components/ui/LoadingSpinner/index.jsx';
-import { Button, Badge } from '../../components/ui';
+import FloatingCartButton from '../../components/FloatingCartButton/index.jsx';
 import { useCart } from '../../context/CartContext.jsx';
 import { useDeviceType } from '../../hooks/useDeviceType.js';
 import { ProductsRepository, CategoriesRepository } from '../../modules/index.js';
@@ -24,6 +25,9 @@ function MenuPage() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
+    const [viewMode, setViewMode] = useState('grid');
+    const [priceRange, setPriceRange] = useState({ min: 0, max: 100 });
+    const [sortBy, setSortBy] = useState('name');
 
     useEffect(() => {
         const loadData = async () => {
@@ -47,7 +51,7 @@ function MenuPage() {
         loadData();
     }, []);
 
-    // Filter products based on category and search
+    // Filter and sort products
     useEffect(() => {
         let filtered = products;
 
@@ -65,8 +69,29 @@ function MenuPage() {
             );
         }
 
+        // Filter by price range
+        filtered = filtered.filter(product =>
+            product.price >= priceRange.min && product.price <= priceRange.max
+        );
+
+        // Sort products
+        filtered.sort((a, b) => {
+            switch (sortBy) {
+                case 'price-asc':
+                    return a.price - b.price;
+                case 'price-desc':
+                    return b.price - a.price;
+                case 'name':
+                    return a.name.localeCompare(b.name);
+                case 'popular':
+                    return (b.rating || 0) - (a.rating || 0);
+                default:
+                    return 0;
+            }
+        });
+
         setFilteredProducts(filtered);
-    }, [products, selectedCategory, searchTerm]);
+    }, [products, selectedCategory, searchTerm, priceRange, sortBy]);
 
     const handleSearch = (term) => {
         setSearchTerm(term);
@@ -74,6 +99,18 @@ function MenuPage() {
 
     const handleCategorySelect = (category) => {
         setSelectedCategory(category);
+    };
+
+    const handleViewModeChange = (mode) => {
+        setViewMode(mode);
+    };
+
+    const handlePriceRangeChange = (range) => {
+        setPriceRange(range);
+    };
+
+    const handleSortChange = (sort) => {
+        setSortBy(sort);
     };
 
     const handleCartClick = () => {
@@ -93,37 +130,33 @@ function MenuPage() {
     return (
         <Layout title={t('menu')} showBack={true}>
             <div className="menu-page">
-                <SearchBar onSearch={handleSearch} />
+                <div className="menu-content">
+                    <SearchBar onSearch={handleSearch} />
 
-                <CategoryFilter
-                    categories={categories}
-                    selectedCategory={selectedCategory}
-                    onSelectCategory={handleCategorySelect}
-                />
+                    <AdvancedFilters
+                        onPriceRangeChange={handlePriceRangeChange}
+                        onSortChange={handleSortChange}
+                        onViewChange={handleViewModeChange}
+                        viewMode={viewMode}
+                        priceRange={priceRange}
+                        sortBy={sortBy}
+                    />
 
-                <ProductGrid
-                    products={filteredProducts}
-                    title={selectedCategory ? selectedCategory.name : t('allProducts')}
-                />
+                    <CategoryFilter
+                        categories={categories}
+                        selectedCategory={selectedCategory}
+                        onSelectCategory={handleCategorySelect}
+                    />
 
-                {/* Cart button - only show on mobile */}
-                {isMobile && (
-                    <div className="cart-button-container">
-                        <Button
-                            onClick={handleCartClick}
-                            variant="primary"
-                            size="large"
-                            className="cart-button"
-                        >
-                            🛒
-                            {cartCount > 0 && (
-                                <Badge variant="danger" size="small" className="cart-count">
-                                    {cartCount}
-                                </Badge>
-                            )}
-                        </Button>
-                    </div>
-                )}
+                    <ProductGrid
+                        products={filteredProducts}
+                        title={selectedCategory ? selectedCategory.name : t('allProducts')}
+                        viewMode={viewMode}
+                    />
+                </div>
+
+                {/* Floating cart button */}
+                <FloatingCartButton />
             </div>
         </Layout>
     );
