@@ -41,89 +41,90 @@ function LoginPage() {
     }
 
     return (
-        <Layout title={t('loginTitle')}>
-            <div className="login-container">
-                <Card className="login-card" padding="large" shadow="large">
-                    {/* Header */}
-                    <div className="login-header">
-                        <div className="login-icon">
-                            <User className="h-8 w-8 text-white" />
-                        </div>
-                        <h2 className="login-title">
-                            {t('welcome')}
-                        </h2>
-                        <p className="login-subtitle">
-                            {t('loginSubtitle')}
-                        </p>
+        <div className="login-container">
+            <head>
+                <title>{t('loginTitle')}</title>
+            </head>
+            <Card className="login-card" padding="large" shadow="large">
+                {/* Header */}
+                <div className="login-header">
+                    <div className="login-icon">
+                        <User className="h-8 w-8 text-white" />
                     </div>
+                    <h2 className="login-title">
+                        {t('welcome')}
+                    </h2>
+                    <p className="login-subtitle">
+                        {t('loginSubtitle')}
+                    </p>
+                </div>
 
-                    {/* Form */}
-                    <form onSubmit={handleSubmit} className="login-form">
-                        {error && (
-                            <div className="error-message">
-                                {error}
-                            </div>
-                        )}
-
-                        <div className="form-group">
-                            <label htmlFor="username" className="form-label">
-                                {t('username')}
-                            </label>
-                            <Input
-                                id="username"
-                                type="text"
-                                required
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                placeholder={t('usernamePlaceholder')}
-                                fullWidth
-                            />
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="login-form">
+                    {error && (
+                        <div className="error-message">
+                            {error}
                         </div>
+                    )}
 
-                        <div className="form-group">
-                            <label htmlFor="password" className="form-label">
-                                {t('password')}
-                            </label>
-                            <Input
-                                id="password"
-                                type="password"
-                                required
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder={t('passwordPlaceholder')}
-                                fullWidth
-                            />
-                        </div>
-
-                        <Button
-                            type="submit"
-                            disabled={isLoading}
-                            variant="primary"
-                            size="large"
+                    <div className="form-group">
+                        <label htmlFor="username" className="form-label">
+                            {t('username')}
+                        </label>
+                        <Input
+                            id="username"
+                            type="text"
+                            required
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder={t('usernamePlaceholder')}
                             fullWidth
-                        >
-                            {isLoading ? t('signingIn') : t('signIn')}
-                        </Button>
-                    </form>
+                        />
+                    </div>
 
-                    {/* Demo Credentials */}
-                    <div className="demo-credentials">
-                        <h3 className="demo-title">{t('demoCredentials')}</h3>
-                        <div className="demo-list">
-                            <div>
-                                <strong>{t('waiter')}:</strong> waiter1 / password123
-                            </div>
-                            <div>
-                                <strong>{t('manager')}:</strong> manager / password123
-                            </div>
-                            <div>
-                                <strong>{t('admin')}:</strong> admin / password123
-                            </div>
+                    <div className="form-group">
+                        <label htmlFor="password" className="form-label">
+                            {t('password')}
+                        </label>
+                        <Input
+                            id="password"
+                            type="password"
+                            required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder={t('passwordPlaceholder')}
+                            fullWidth
+                        />
+                    </div>
+
+                    <Button
+                        type="submit"
+                        disabled={isLoading}
+                        variant="primary"
+                        size="large"
+                        fullWidth
+                    >
+                        {isLoading ? t('signingIn') : t('signIn')}
+                    </Button>
+                </form>
+
+                {/* Demo Credentials */}
+                <div className="demo-credentials">
+                    <h3 className="demo-title">{t('demoCredentials')}</h3>
+                    <div className="demo-list">
+                        <div>
+                            <strong>{t('waiter')}:</strong> waiter1 / password123
+                        </div>
+                        <div>
+                            <strong>{t('manager')}:</strong> manager / password123
+                        </div>
+                        <div>
+                            <strong>{t('admin')}:</strong> admin / password123
                         </div>
                     </div>
-                </Card>
-            </div>
-        </Layout>
+                </div>
+            </Card>
+        </div>
     );
 }
 

@@ -12,6 +12,7 @@ import AdminDashboardPage from './routes/admin-dashboard/index.jsx'
 import ProfilePage from './routes/profile/index.jsx'
 import ProtectedRoute from './components/ProtectedRoute/index.jsx'
 import ErrorBoundary from './components/ErrorBoundary/index.jsx'
+import Layout from './layouts/index.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import { WebSocketProvider } from './context/WebSocketContext.jsx'
@@ -22,7 +23,13 @@ import { ThemeProvider } from './context/ThemeContext.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ErrorBoundary> <Outlet /> </ErrorBoundary>,
+    element: (
+      <ErrorBoundary>
+        <Layout>
+          <Outlet />
+        </Layout>
+      </ErrorBoundary>
+    ),
     children: [
       {
         index: true,

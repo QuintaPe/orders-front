@@ -14,27 +14,28 @@ function NotFoundPage() {
     };
 
     return (
-        <Layout title={t('pageNotFound')}>
-            <div className="not-found-page">
-                <div className="not-found-content">
-                    <div className="not-found-icon">404</div>
-                    <h1 className="not-found-title">{t('pageNotFound')}</h1>
-                    <p className="not-found-description">
-                        {t('pageNotFoundDescription')}
-                    </p>
-                    <div className="not-found-actions">
-                        <Button
-                            onClick={handleGoBack}
-                            variant="outline"
-                            size="medium"
-                            className="back-button"
-                        >
-                            {t('goBack')}
-                        </Button>
-                    </div>
+        <div className="not-found-page">
+            <head>
+                <title>{t('pageNotFound')}</title>
+            </head>
+            <div className="not-found-content">
+                <div className="not-found-icon">404</div>
+                <h1 className="not-found-title">{t('pageNotFound')}</h1>
+                <p className="not-found-description">
+                    {t('pageNotFoundDescription')}
+                </p>
+                <div className="not-found-actions">
+                    <Button
+                        onClick={handleGoBack}
+                        variant="outline"
+                        size="medium"
+                        className="back-button"
+                    >
+                        {t('goBack')}
+                    </Button>
                 </div>
             </div>
-        </Layout>
+        </div>
     );
 }
 

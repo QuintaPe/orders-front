@@ -217,3 +217,8 @@ body {
   background: var(--primary-color);
   color: var(--text-inverse);
 }
+
+/* Simple View Transitions - Same for all routes */
+@view-transition {
+  navigation: auto;
+}

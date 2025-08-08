@@ -52,78 +52,85 @@ function ProductDetailPage() {
 
     if (loading) {
         return (
-            <Layout title={t('product')} showBack={true}>
+            <div className="product-detail-page">
+                <head>
+                    <title>{t('product')}</title>
+                </head>
                 <LoadingSpinner />
-            </Layout>
+            </div>
         );
     }
 
     if (!product) {
         return (
-            <Layout title={t('productNotFound')} showBack={true}>
+            <div className="product-detail-page">
+                <head>
+                    <title>{t('productNotFound')}</title>
+                </head>
                 <div className="product-not-found">
                     <h2>{t('productNotFound')}</h2>
                     <p>El producto que buscas no existe.</p>
                 </div>
-            </Layout>
+            </div>
         );
     }
 
     return (
-        <Layout title={product.name} showBack={true}>
-            <div className="product-detail-page">
-                <div className="product-image-container">
-                    <img
-                        src={product.image || '/placeholder-food.jpg'}
-                        alt={product.name}
-                        className="product-image"
-                    />
-                </div>
+        <div className="product-detail-page">
+            <head>
+                <title>{product.name}</title>
+            </head>
+            <div className="product-image-container">
+                <img
+                    src={product.image || '/placeholder-food.jpg'}
+                    alt={product.name}
+                    className="product-image"
+                />
+            </div>
 
-                <div className="product-info">
-                    <h1 className="product-name">{product.name}</h1>
-                    <p className="product-category">{product.category}</p>
-                    <p className="product-description">{product.description}</p>
+            <div className="product-info">
+                <h1 className="product-name">{product.name}</h1>
+                <p className="product-category">{product.category}</p>
+                <p className="product-description">{product.description}</p>
 
-                    <div className="product-price">€{product.price}</div>
+                <div className="product-price">€{product.price}</div>
 
-                    <div className="product-actions">
-                        <div className="quantity-controls">
-                            <Button
-                                onClick={() => handleQuantityChange(quantity - 1)}
-                                variant="outline"
-                                size="small"
-                                className="quantity-button"
-                                disabled={quantity <= 1}
-                            >
-                                -
-                            </Button>
-                            <Badge variant="primary" size="medium" className="quantity-display">
-                                {quantity}
-                            </Badge>
-                            <Button
-                                onClick={() => handleQuantityChange(quantity + 1)}
-                                variant="outline"
-                                size="small"
-                                className="quantity-button"
-                            >
-                                +
-                            </Button>
-                        </div>
-
+                <div className="product-actions">
+                    <div className="quantity-controls">
                         <Button
-                            onClick={handleAddToCart}
-                            variant="primary"
-                            size="large"
-                            fullWidth
-                            className="add-to-cart-button"
+                            onClick={() => handleQuantityChange(quantity - 1)}
+                            variant="outline"
+                            size="small"
+                            className="quantity-button"
+                            disabled={quantity <= 1}
                         >
-                            {t('addToCart')} - €{(product.price * quantity).toFixed(2)}
+                            -
+                        </Button>
+                        <Badge variant="primary" size="medium" className="quantity-display">
+                            {quantity}
+                        </Badge>
+                        <Button
+                            onClick={() => handleQuantityChange(quantity + 1)}
+                            variant="outline"
+                            size="small"
+                            className="quantity-button"
+                        >
+                            +
                         </Button>
                     </div>
+
+                    <Button
+                        onClick={handleAddToCart}
+                        variant="primary"
+                        size="large"
+                        fullWidth
+                        className="add-to-cart-button"
+                    >
+                        {t('addToCart')} - €{(product.price * quantity).toFixed(2)}
+                    </Button>
                 </div>
             </div>
-        </Layout>
+        </div>
     );
 }
 

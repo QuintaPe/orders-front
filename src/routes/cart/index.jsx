@@ -58,46 +58,47 @@ function CartPage() {
     };
 
     return (
-        <Layout title={t('cart')} showBack={true}>
-            <div className="cart-page">
-                {cartItems.length === 0 ? (
-                    <div className="cart-content">
-                        <EmptyState
-                            icon="🛒"
-                            title={t('cartEmpty')}
-                            description={t('cartEmptyDescription')}
-                            actionText={t('viewMenu')}
-                            onAction={handleBackToMenu}
+        <div className="cart-page">
+            <head>
+                <title>{t('cart')}</title>
+            </head>
+            {cartItems.length === 0 ? (
+                <div className="cart-content">
+                    <EmptyState
+                        icon="🛒"
+                        title={t('cartEmpty')}
+                        description={t('cartEmptyDescription')}
+                        actionText={t('viewMenu')}
+                        onAction={handleBackToMenu}
+                    />
+                </div>
+            ) : (
+                <div className="cart-content">
+                    <div className="cart-items-section">
+                        <div className="cart-items">
+                            {cartItems.map((item) => (
+                                <CartItem
+                                    key={item.id}
+                                    item={item}
+                                    onQuantityChange={handleQuantityChange}
+                                    onRemove={handleRemoveFromCart}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="cart-summary-section">
+                        <CartSummary
+                            totalAmount={getCartTotal()}
+                            itemCount={cartItems.length}
+                            onClearCart={clearCart}
+                            onPlaceOrder={handleSubmit}
+                            isSubmitting={isSubmitting}
                         />
                     </div>
-                ) : (
-                    <div className="cart-content">
-                        <div className="cart-items-section">
-                            <div className="cart-items">
-                                {cartItems.map((item) => (
-                                    <CartItem
-                                        key={item.id}
-                                        item={item}
-                                        onQuantityChange={handleQuantityChange}
-                                        onRemove={handleRemoveFromCart}
-                                    />
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="cart-summary-section">
-                            <CartSummary
-                                totalAmount={getCartTotal()}
-                                itemCount={cartItems.length}
-                                onClearCart={clearCart}
-                                onPlaceOrder={handleSubmit}
-                                isSubmitting={isSubmitting}
-                            />
-                        </div>
-                    </div>
-                )}
-            </div>
-        </Layout>
+                </div>
+            )}
+        </div>
     );
 }
 

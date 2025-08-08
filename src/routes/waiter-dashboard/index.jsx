@@ -99,144 +99,145 @@ function WaiterDashboardPage() {
     }
 
     return (
-        <Layout title={t('waiterDashboard')}>
-            <div className="waiter-dashboard">
-                {/* Content */}
-                <div className="dashboard-content">
-                    {/* Stats */}
-                    <div className="stats-grid">
-                        <div className="stat-card">
-                            <div className="stat-content">
-                                <div className="stat-icon stat-icon-pending">
-                                    <Clock className="h-6 w-6" />
-                                </div>
-                                <div className="stat-info">
-                                    <p className="stat-label">{t('pending')}</p>
-                                    <p className="stat-value">
-                                        {orders.filter(order => order.status === 'pending').length}
-                                    </p>
-                                </div>
+        <div className="waiter-dashboard">
+            <head>
+                <title>{t('waiterDashboard')}</title>
+            </head>
+            {/* Content */}
+            <div className="dashboard-content">
+                {/* Stats */}
+                <div className="stats-grid">
+                    <div className="stat-card">
+                        <div className="stat-content">
+                            <div className="stat-icon stat-icon-pending">
+                                <Clock className="h-6 w-6" />
                             </div>
-                        </div>
-
-                        <div className="stat-card">
-                            <div className="stat-content">
-                                <div className="stat-icon stat-icon-preparing">
-                                    <ChefHat className="h-6 w-6" />
-                                </div>
-                                <div className="stat-info">
-                                    <p className="stat-label">{t('preparing')}</p>
-                                    <p className="stat-value">
-                                        {orders.filter(order => order.status === 'preparing').length}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="stat-card">
-                            <div className="stat-content">
-                                <div className="stat-icon stat-icon-ready">
-                                    <CheckCircle className="h-6 w-6" />
-                                </div>
-                                <div className="stat-info">
-                                    <p className="stat-label">{t('ready')}</p>
-                                    <p className="stat-value">
-                                        {orders.filter(order => order.status === 'ready').length}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="stat-card">
-                            <div className="stat-content">
-                                <div className="stat-icon stat-icon-delivered">
-                                    <CheckCircle2 className="h-6 w-6" />
-                                </div>
-                                <div className="stat-info">
-                                    <p className="stat-label">{t('delivered')}</p>
-                                    <p className="stat-value">
-                                        {orders.filter(order => order.status === 'delivered').length}
-                                    </p>
-                                </div>
+                            <div className="stat-info">
+                                <p className="stat-label">{t('pending')}</p>
+                                <p className="stat-value">
+                                    {orders.filter(order => order.status === 'pending').length}
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Orders List */}
-                    <div className="orders-container">
-                        <div className="orders-header">
-                            <h2 className="orders-title">{t('orders')}</h2>
+                    <div className="stat-card">
+                        <div className="stat-content">
+                            <div className="stat-icon stat-icon-preparing">
+                                <ChefHat className="h-6 w-6" />
+                            </div>
+                            <div className="stat-info">
+                                <p className="stat-label">{t('preparing')}</p>
+                                <p className="stat-value">
+                                    {orders.filter(order => order.status === 'preparing').length}
+                                </p>
+                            </div>
                         </div>
-                        <div className="orders-list">
-                            {orders.length === 0 ? (
-                                <EmptyState
-                                    icon="📋"
-                                    title={t('noOrders')}
-                                    description={t('noOrdersDescription')}
-                                />
-                            ) : (
-                                orders.map((order) => (
-                                    <div key={order.id} className={`order-item ${order.isNew ? 'new-order' : ''}`}>
-                                        <div className="order-content">
-                                            <div className="order-header">
-                                                <div className="table-info">
-                                                    <div className="table-number">
-                                                        {order.table_number}
-                                                    </div>
-                                                </div>
-                                                <div className="order-details">
-                                                    <p className="table-title">
-                                                        {t('tableNumber', { number: order.table_number })}
-                                                    </p>
-                                                    <p className="order-summary">
-                                                        {order.products?.length || 0} {t('products')}
-                                                    </p>
-                                                    <p className="order-total">
-                                                        {t('total')}: €{order.total?.toFixed(2) || '0.00'}
-                                                    </p>
-                                                </div>
-                                                <div className="order-status">
-                                                    <span className={`status-badge ${getStatusColor(order.status)}`}>
-                                                        {getStatusText(order.status)}
-                                                    </span>
-                                                </div>
-                                            </div>
+                    </div>
 
-                                            {/* Products List */}
-                                            {order.products && order.products.length > 0 && (
-                                                <div className="products-list">
-                                                    <div className="products-content">
-                                                        {order.products.map((product, index) => (
-                                                            <div key={index} className="product-item">
-                                                                <span className="product-quantity">{product.quantity}x {product.name}</span>
-                                                                <span className="product-price">€{(product.price * product.quantity).toFixed(2)}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
+                    <div className="stat-card">
+                        <div className="stat-content">
+                            <div className="stat-icon stat-icon-ready">
+                                <CheckCircle className="h-6 w-6" />
+                            </div>
+                            <div className="stat-info">
+                                <p className="stat-label">{t('ready')}</p>
+                                <p className="stat-value">
+                                    {orders.filter(order => order.status === 'ready').length}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-                                        {/* Action Buttons */}
-                                        <div className="order-actions">
-                                            {getNextStatus(order.status) && (
-                                                <button
-                                                    onClick={() => handleUpdateOrderStatus(order.id, getNextStatus(order.status))}
-                                                    disabled={updatingOrder === order.id}
-                                                    className="action-button"
-                                                >
-                                                    {updatingOrder === order.id ? t('updating') : getNextStatusText(order.status)}
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))
-                            )}
+                    <div className="stat-card">
+                        <div className="stat-content">
+                            <div className="stat-icon stat-icon-delivered">
+                                <CheckCircle2 className="h-6 w-6" />
+                            </div>
+                            <div className="stat-info">
+                                <p className="stat-label">{t('delivered')}</p>
+                                <p className="stat-value">
+                                    {orders.filter(order => order.status === 'delivered').length}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Orders List */}
+                <div className="orders-container">
+                    <div className="orders-header">
+                        <h2 className="orders-title">{t('orders')}</h2>
+                    </div>
+                    <div className="orders-list">
+                        {orders.length === 0 ? (
+                            <EmptyState
+                                icon="📋"
+                                title={t('noOrders')}
+                                description={t('noOrdersDescription')}
+                            />
+                        ) : (
+                            orders.map((order) => (
+                                <div key={order.id} className={`order-item ${order.isNew ? 'new-order' : ''}`}>
+                                    <div className="order-content">
+                                        <div className="order-header">
+                                            <div className="table-info">
+                                                <div className="table-number">
+                                                    {order.table_number}
+                                                </div>
+                                            </div>
+                                            <div className="order-details">
+                                                <p className="table-title">
+                                                    {t('tableNumber', { number: order.table_number })}
+                                                </p>
+                                                <p className="order-summary">
+                                                    {order.products?.length || 0} {t('products')}
+                                                </p>
+                                                <p className="order-total">
+                                                    {t('total')}: €{order.total?.toFixed(2) || '0.00'}
+                                                </p>
+                                            </div>
+                                            <div className="order-status">
+                                                <span className={`status-badge ${getStatusColor(order.status)}`}>
+                                                    {getStatusText(order.status)}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Products List */}
+                                        {order.products && order.products.length > 0 && (
+                                            <div className="products-list">
+                                                <div className="products-content">
+                                                    {order.products.map((product, index) => (
+                                                        <div key={index} className="product-item">
+                                                            <span className="product-quantity">{product.quantity}x {product.name}</span>
+                                                            <span className="product-price">€{(product.price * product.quantity).toFixed(2)}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Action Buttons */}
+                                    <div className="order-actions">
+                                        {getNextStatus(order.status) && (
+                                            <button
+                                                onClick={() => handleUpdateOrderStatus(order.id, getNextStatus(order.status))}
+                                                disabled={updatingOrder === order.id}
+                                                className="action-button"
+                                            >
+                                                {updatingOrder === order.id ? t('updating') : getNextStatusText(order.status)}
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
             </div>
-        </Layout>
+        </div>
     );
 }
 

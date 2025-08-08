@@ -123,52 +123,54 @@ function MenuPage() {
 
     if (loading) {
         return (
-            <Layout title={t('menu')} showBack={true}>
+            <div className="menu-page">
+                <head>
+                    <title>{t('menu')}</title>
+                </head>
                 <LoadingSpinner />
-            </Layout>
+            </div>
         );
     }
 
-    const cartCount = getCartCount();
-
     return (
-        <Layout title={t('menu')} showBack={true}>
-            <div className="menu-page">
-                <div className="menu-content">
-                    <AdvancedFilters
-                        onPriceRangeChange={handlePriceRangeChange}
-                        onSortChange={handleSortChange}
-                        onViewChange={handleViewModeChange}
-                        onSearchChange={handleSearchChange}
-                        onCategoryChange={handleCategoryChange}
-                        viewMode={viewMode}
-                        priceRange={priceRange}
-                        sortBy={sortBy}
-                        searchQuery={searchQuery}
-                        selectedCategory={selectedCategory}
-                        categories={categoryOptions}
-                    />
-                    <div className="product-grid-container">
-                        {filteredProducts.length > 0 ? (
-                            <div className={`product-grid product-grid--${viewMode}`}>
-                                {filteredProducts.map(product => (
-                                    <ProductCard key={product.id} product={product} viewMode={viewMode} />
-                                ))}
-                            </div>
-                        ) : (
-                            <EmptyState
-                                icon="🍕"
-                                title="No se encontraron productos"
-                                description="Intenta seleccionar una categoría diferente o cambiar el término de búsqueda."
-                            />
-                        )}
-                    </div>
+        <div className="menu-page">
+            <head>
+                <title>{t('menu')}</title>
+            </head>
+            <div className="menu-content">
+                <AdvancedFilters
+                    onPriceRangeChange={handlePriceRangeChange}
+                    onSortChange={handleSortChange}
+                    onViewChange={handleViewModeChange}
+                    onSearchChange={handleSearchChange}
+                    onCategoryChange={handleCategoryChange}
+                    viewMode={viewMode}
+                    priceRange={priceRange}
+                    sortBy={sortBy}
+                    searchQuery={searchQuery}
+                    selectedCategory={selectedCategory}
+                    categories={categoryOptions}
+                />
+                <div className="product-grid-container">
+                    {filteredProducts.length > 0 ? (
+                        <div className={`product-grid product-grid--${viewMode}`}>
+                            {filteredProducts.map(product => (
+                                <ProductCard key={product.id} product={product} viewMode={viewMode} />
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyState
+                            icon="🍕"
+                            title="No se encontraron productos"
+                            description="Intenta seleccionar una categoría diferente o cambiar el término de búsqueda."
+                        />
+                    )}
                 </div>
-
-                {/* Floating cart button */}
-                <FloatingCartButton />
             </div>
-        </Layout>
+
+            {/* Floating cart button */}
+            <FloatingCartButton />
+        </div>
     );
 }
 
