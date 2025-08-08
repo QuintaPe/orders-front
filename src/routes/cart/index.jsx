@@ -59,9 +59,7 @@ function CartPage() {
 
     return (
         <div className="cart-page">
-            <head>
-                <title>{t('cart')}</title>
-            </head>
+            <title>{t('cart')}</title>
             {cartItems.length === 0 ? (
                 <div className="cart-content">
                     <EmptyState

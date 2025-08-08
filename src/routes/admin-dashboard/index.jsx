@@ -136,9 +136,7 @@ function AdminDashboardPage() {
 
     return (
         <div className="admin-dashboard">
-            <head>
-                <title>{t('adminDashboard')}</title>
-            </head>
+            <title>{t('adminDashboard')}</title>
             {/* Navigation Tabs */}
             <div className="dashboard-nav">
                 <div className="nav-content">

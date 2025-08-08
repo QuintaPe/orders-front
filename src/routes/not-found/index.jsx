@@ -15,9 +15,7 @@ function NotFoundPage() {
 
     return (
         <div className="not-found-page">
-            <head>
-                <title>{t('pageNotFound')}</title>
-            </head>
+            <title>{t('pageNotFound')}</title>
             <div className="not-found-content">
                 <div className="not-found-icon">404</div>
                 <h1 className="not-found-title">{t('pageNotFound')}</h1>

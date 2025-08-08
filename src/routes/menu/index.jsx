@@ -124,9 +124,7 @@ function MenuPage() {
     if (loading) {
         return (
             <div className="menu-page">
-                <head>
-                    <title>{t('menu')}</title>
-                </head>
+                <title>{t('menu')}</title>
                 <LoadingSpinner />
             </div>
         );
@@ -134,9 +132,7 @@ function MenuPage() {
 
     return (
         <div className="menu-page">
-            <head>
-                <title>{t('menu')}</title>
-            </head>
+            <title>{t('menu')}</title>
             <div className="menu-content">
                 <AdvancedFilters
                     onPriceRangeChange={handlePriceRangeChange}

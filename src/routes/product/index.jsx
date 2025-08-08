@@ -53,9 +53,7 @@ function ProductDetailPage() {
     if (loading) {
         return (
             <div className="product-detail-page">
-                <head>
-                    <title>{t('product')}</title>
-                </head>
+                <title>{t('product')}</title>
                 <LoadingSpinner />
             </div>
         );
@@ -64,9 +62,7 @@ function ProductDetailPage() {
     if (!product) {
         return (
             <div className="product-detail-page">
-                <head>
-                    <title>{t('productNotFound')}</title>
-                </head>
+                <title>{t('productNotFound')}</title>
                 <div className="product-not-found">
                     <h2>{t('productNotFound')}</h2>
                     <p>El producto que buscas no existe.</p>
@@ -77,9 +73,7 @@ function ProductDetailPage() {
 
     return (
         <div className="product-detail-page">
-            <head>
-                <title>{product.name}</title>
-            </head>
+            <title>{product.name}</title>
             <div className="product-image-container">
                 <img
                     src={product.image || '/placeholder-food.jpg'}

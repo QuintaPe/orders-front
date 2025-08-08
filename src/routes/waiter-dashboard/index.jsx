@@ -100,9 +100,7 @@ function WaiterDashboardPage() {
 
     return (
         <div className="waiter-dashboard">
-            <head>
-                <title>{t('waiterDashboard')}</title>
-            </head>
+            <title>{t('waiterDashboard')}</title>
             {/* Content */}
             <div className="dashboard-content">
                 {/* Stats */}

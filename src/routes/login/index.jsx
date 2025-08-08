@@ -42,9 +42,7 @@ function LoginPage() {
 
     return (
         <div className="login-container">
-            <head>
-                <title>{t('loginTitle')}</title>
-            </head>
+            <title>{t('loginTitle')}</title>
             <Card className="login-card" padding="large" shadow="large">
                 {/* Header */}
                 <div className="login-header">

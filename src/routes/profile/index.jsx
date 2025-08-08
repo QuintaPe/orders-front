@@ -84,9 +84,7 @@ function ProfilePage() {
     if (!isAuthenticated || !user) {
         return (
             <div className="profile-page">
-                <head>
-                    <title>{t('profile')}</title>
-                </head>
+                <title>{t('profile')}</title>
                 <div className="profile-error">
                     <h2>{t('accessDenied')}</h2>
                     <p>{t('pleaseLoginToViewProfile')}</p>
@@ -97,9 +95,7 @@ function ProfilePage() {
 
     return (
         <div className="profile-page">
-            <head>
-                <title>{t('profile')}</title>
-            </head>
+            <title>{t('profile')}</title>
             <div className="profile-container">
                 {/* Profile Header */}
                 <div className="profile-header">
