@@ -5,7 +5,7 @@ function Layout({ children }) {
     return (
         <>
             <NavigationBar />
-            <main className="page-transition">
+            <main>
                 {children}
             </main>
         </>

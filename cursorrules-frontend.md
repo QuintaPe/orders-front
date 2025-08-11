@@ -49,6 +49,7 @@ This is a React-based frontend for a bar QR code ordering system with real-time 
   - `ErrorBoundary/` - Error handling
 
 ### Routes (`src/routes/`)
+All routes are wrapped by the Layout component:
 - `/` - Menu page (product catalog with filtering)
 - `product/:id` - Individual product details
 - `cart/` - Shopping cart management

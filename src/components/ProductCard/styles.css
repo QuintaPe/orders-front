@@ -1,18 +1,17 @@
 .product-card {
-    background: var(--bg-gradient-card);
+    background: var(--bg-card);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: all var(--transition-normal);
     cursor: pointer;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border-color);
     position: relative;
-    backdrop-filter: blur(10px);
 }
 
 .product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-primary-hover);
-    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-dark);
 }
 
 .product-card--list {
@@ -31,16 +30,15 @@
     flex-direction: row !important;
     align-items: center !important;
     gap: 1rem !important;
-    background: var(--bg-gradient-card) !important;
+    background: var(--bg-card) !important;
     border-radius: var(--radius-md) !important;
-    border: 1px solid var(--border-light) !important;
+    border: 1px solid var(--border-color) !important;
     padding: 0.75rem !important;
-    backdrop-filter: blur(10px) !important;
 }
 
 .product-card--list .product-card-content:hover {
-    border-color: var(--primary-color) !important;
-    box-shadow: var(--shadow-primary) !important;
+    border-color: var(--border-dark) !important;
+    box-shadow: var(--shadow-sm) !important;
 }
 
 .product-card--list .product-image {
@@ -118,7 +116,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--bg-gradient-secondary);
+    background: var(--bg-secondary);
     aspect-ratio: 2/1;
     transition: background var(--transition-normal);
     position: relative;
@@ -132,13 +130,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--primary-gradient);
-    opacity: 0.05;
+    background: var(--primary-color);
+    opacity: 0.03;
     transition: opacity var(--transition-normal);
 }
 
 .product-card:hover .product-image::before {
-    opacity: 0.1;
+    opacity: 0.06;
 }
 
 .product-icon {
@@ -150,8 +148,8 @@
     justify-content: center;
     font-size: var(--font-size-2xl);
     color: var(--text-inverse);
-    background: var(--primary-gradient);
-    box-shadow: var(--shadow-primary);
+    background: var(--primary-color);
+    box-shadow: var(--shadow-sm);
     position: relative;
     z-index: 1;
 }
@@ -185,10 +183,7 @@
 .product-price {
     font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
 }
 
 .product-cart-controls {
@@ -198,7 +193,7 @@
 }
 
 .quantity-display {
-    background: var(--primary-gradient);
+    background: var(--primary-color);
     color: var(--text-inverse);
     border-radius: var(--radius-full);
     width: 24px;
@@ -208,23 +203,21 @@
     justify-content: center;
     font-size: var(--font-size-xs);
     font-weight: var(--font-weight-bold);
-    box-shadow: var(--shadow-primary);
+    box-shadow: var(--shadow-sm);
 }
 
 .quantity-selector {
     display: flex;
     align-items: center;
-    background: var(--bg-gradient-secondary);
+    background: var(--bg-secondary);
     border-radius: var(--radius-md);
     padding: 0.125rem;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border-color);
     transition: all var(--transition-normal);
-    backdrop-filter: blur(10px);
 }
 
 .quantity-selector:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-sm);
+    border-color: var(--border-dark);
 }
 
 .quantity-btn {
@@ -242,9 +235,8 @@
 }
 
 .quantity-btn:hover:not(:disabled) {
-    background: var(--primary-gradient);
+    background: var(--primary-color);
     color: var(--text-inverse);
-    transform: scale(1.1);
 }
 
 .quantity-btn:disabled {
@@ -265,7 +257,7 @@
     width: 32px;
     height: 32px;
     border: none;
-    background: var(--primary-gradient);
+    background: var(--primary-color);
     color: var(--text-inverse);
     border-radius: var(--radius-full);
     display: flex;
@@ -273,13 +265,12 @@
     justify-content: center;
     cursor: pointer;
     transition: all var(--transition-fast);
-    box-shadow: var(--shadow-primary);
+    box-shadow: var(--shadow-sm);
 }
 
 .add-to-cart-btn:hover {
-    background: var(--primary-gradient-hover);
-    transform: scale(1.1);
-    box-shadow: var(--shadow-primary-hover);
+    background: var(--primary-dark);
+    transform: scale(1.05);
 }
 
 .add-to-cart-btn:active {
